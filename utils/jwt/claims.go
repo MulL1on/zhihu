@@ -15,7 +15,6 @@ type CustomClaims struct {
 
 type BaseClaims struct {
 	Id         int64
-	Username   string
 	CreateTime time.Time
 	UpdateTime time.Time
 }

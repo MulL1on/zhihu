@@ -52,10 +52,15 @@ func ZapRecovery(logger *zap.Logger, stack bool) gin.HandlerFunc {
 					return
 				}
 				if stack {
-					logger.Error("[recover from panic]", zap.Any("error", err), zap.String("request", string(httpRequest)))
+					logger.Error("[Recover from panic]", zap.Any("error", err), zap.String("request", string(httpRequest)))
+				} else {
+					logger.Error("[Recovery from panic]",
+						zap.Any("error", err),
+						zap.String("request", string(httpRequest)),
+					)
 				}
+				c.AbortWithStatus(http.StatusInternalServerError)
 			}
-			c.AbortWithStatus(http.StatusInternalServerError)
 		}()
 		c.Next()
 	}

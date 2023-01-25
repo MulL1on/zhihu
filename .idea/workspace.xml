@@ -5,12 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="836dc47c-4f2c-4689-a609-712f67699779" name="变更" comment="new boot file">
-      <change afterPath="$PROJECT_DIR$/app/api/entry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/user/entry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/internal/service/entry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/user/entry.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/user/sign.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/internal/model/user/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/user/user.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/router/entry.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/router/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/router/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/entry.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/user/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/user/entry.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/internal/middleware/logger.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/middleware/logger.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/model/config/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/config/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/service/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/entry.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/user/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/user/entry.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/database.go" beforeDir="false" afterPath="$PROJECT_DIR$/boot/database.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/boot/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/jwt/claims.go" beforeDir="false" afterPath="$PROJECT_DIR$/utils/jwt/claims.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/掘金API文档.md" beforeDir="false" afterPath="$PROJECT_DIR$/掘金API文档.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,9 +74,36 @@
       <recent name="D:\GoProjects\src\juejin\app\internal" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="go build juejin" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="juejin" />
+      <working_directory value="$PROJECT_DIR$" />
+      <kind value="PACKAGE" />
+      <package value="juejin" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$/main.go" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Go 构建.go build juejin" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="应用程序级" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="new config.yaml" />

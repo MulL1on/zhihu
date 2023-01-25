@@ -33,7 +33,7 @@ type Redis struct {
 }
 
 func (m *Mysql) GetDsn() string {
-	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Lacal",
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s?charset=%s&parseTime=True&loc=Local",
 		m.Username,
 		m.Password,
 		m.Addr,

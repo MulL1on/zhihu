@@ -513,15 +513,13 @@ GET /api/user/info
 
 ### 返回参数
 
-| 名称              | 必选 | 类型     | 说明         |
-| ----------------- | ---- | -------- | ------------ |
-| username          | 是   | string   | 用户名       |
-| creat_at          | 是   | datetime | 加入于       |
-| likes_count       | 是   | number   | 收到的赞     |
-| views_count       | 是   | number   | 文章被阅读量 |
-| collections_count | 是   | number   | 收藏集数目   |
-| followees_count   | 是   | number   | 关注了数目   |
-| followers_count   | 是   | number   | 关注者数目   |
+| 名称         | 必选 | 类型       | 说明         |
+| ------------ | ---- | ---------- | ------------ |
+| user_id      | 是   | string     | 用户id       |
+| username     | 是   | string     | 用户名       |
+| create_time  | 是   | timestamp  | 创建时间     |
+| user_basic   | 是   | 复杂结构体 | 用户基本信息 |
+| user_counter | 是   | 复杂结构体 | 用户数据信息 |
 
 ### 返回示例
 
@@ -531,6 +529,27 @@ GET /api/user/info
 {
 "status":200
 "info":"get user info successfully"
+"data":
+    "user_id":string
+    "username":string
+    "create_time":timestamp
+    "user_basic":{
+       "avatar":string
+       "company":string
+       "description":string
+       "job_title":string
+    }
+    "user_counter":{
+        "digg_article_count":number
+        "digg_shortmsg_count":number
+        "followee_count":number
+        "follower_count":number
+        "got_digg_count":number
+        "got_view_count":number
+        "post_article_count":number
+        "post_shortmsg_count":number
+        "select_online_course_count":number    //选中的课
+    }
 }
 ```
 
@@ -559,7 +578,7 @@ mutipart/form-data
 
 | 名称         | 位置 | 必选 | 类型   | 说明        |
 | ------------ | ---- | ---- | ------ | ----------- |
-| username     | body | 否   | string | 用户id      |
+| username     | body | 否   | string | 用户名      |
 | job_title    | body | 否   | string | 职位        |
 | company      | body | 否   | string | 公司        |
 | blog_address | body | 否   | string | 个人主页url |

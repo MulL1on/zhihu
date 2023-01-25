@@ -5,10 +5,10 @@ import (
 	"database/sql"
 	"fmt"
 	"github.com/go-redis/redis/v9"
+	_ "github.com/go-sql-driver/mysql"
 	"go.uber.org/zap"
-	"time"
-
 	g "juejin/app/global"
+	"time"
 )
 
 func MysqlDBSetup() {

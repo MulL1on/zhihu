@@ -1,0 +1,114 @@
+[2023-01-26 00:40:45.639]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:40:45.648]	FATAL	D:/GoProjects/src/juejin/boot/database.go:18	initialize mysql failed.	{"error": "sql: unknown driver \"mysql\" (forgotten import?)"}
+[2023-01-26 00:41:37.369]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:41:37.378]	FATAL	D:/GoProjects/src/juejin/boot/database.go:18	initialize mysql failed.	{"error": "sql: unknown driver \"mysql\" (forgotten import?)"}
+[2023-01-26 00:43:43.029]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:43:43.044]	FATAL	D:/GoProjects/src/juejin/boot/database.go:18	initialize mysql failed.	{"error": "unknown time zone Lacal"}
+[2023-01-26 00:44:07.266]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:44:07.294]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:44:07.297]	FATAL	D:/GoProjects/src/juejin/boot/database.go:46	connect to redis failed	{"error": "ERR Client sent AUTH, but no password is set"}
+[2023-01-26 00:44:43.895]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:44:43.923]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:44:43.925]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:44:43.925]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:44:43.925]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:44:55.286]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:44:55.311]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:44:55.312]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:44:55.312]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:44:55.312]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:45:35.112]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:61	create mysql record failed	{"error": "Error 1054 (42S22): Unknown column 'creat_time' in 'field list'"}
+[2023-01-26 00:45:35.113]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "58.5988ms"}
+[2023-01-26 00:46:41.853]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:46:41.876]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:46:41.877]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:46:41.878]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:46:41.878]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:46:46.188]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:61	create mysql record failed	{"error": "Error 1364 (HY000): Field 'id' doesn't have a default value"}
+[2023-01-26 00:46:46.188]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "55.4504ms"}
+[2023-01-26 00:49:32.278]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "51.3721ms"}
+[2023-01-26 00:49:51.410]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "551.9µs"}
+[2023-01-26 00:50:31.851]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:25	query mysql record fail	{"error": "sql: expected 7 destination arguments in Scan, not 1"}
+[2023-01-26 00:50:31.851]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.4134ms"}
+[2023-01-26 00:52:43.855]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:25	query mysql record fail	{"error": "sql: expected 7 destination arguments in Scan, not 1"}
+[2023-01-26 00:52:43.855]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.3216ms"}
+[2023-01-26 00:53:38.088]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:25	query mysql record fail	{"error": "sql: expected 7 destination arguments in Scan, not 1"}
+[2023-01-26 00:53:38.088]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "728.1µs"}
+[2023-01-26 00:53:53.300]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "48.7334ms"}
+[2023-01-26 00:54:06.716]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:54:06.738]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:54:06.740]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:54:06.740]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:54:06.740]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:54:16.510]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "51.0731ms"}
+[2023-01-26 00:56:15.260]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.0706ms"}
+[2023-01-26 00:56:28.493]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:25	query mysql record fail	{"error": "sql: expected 7 destination arguments in Scan, not 1"}
+[2023-01-26 00:56:28.493]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.0045ms"}
+[2023-01-26 00:58:06.601]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:58:06.625]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:58:06.626]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:58:06.626]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:58:06.626]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:58:09.117]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "56.1148ms"}
+[2023-01-26 00:59:28.518]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 00:59:28.542]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 00:59:28.543]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 00:59:28.543]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 00:59:28.543]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 00:59:41.977]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "50.747ms"}
+[2023-01-26 01:01:53.126]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:01:53.148]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:01:53.149]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:01:53.149]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:01:53.150]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:03:37.848]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "49.919ms"}
+[2023-01-26 01:09:58.704]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:09:58.729]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:09:58.730]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:09:58.730]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:09:58.731]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:10:11.063]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.8998ms"}
+[2023-01-26 01:10:38.324]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:10:38.347]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:10:38.348]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:10:38.349]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:10:38.349]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:10:44.044]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:10:44.069]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:10:44.070]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:10:44.071]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:10:44.071]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:11:01.627]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 500, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.0162ms"}
+[2023-01-26 01:12:36.491]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:12:36.513]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:12:36.514]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:12:36.515]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:12:36.515]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:15:06.612]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:15:06.634]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:15:06.635]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:15:06.636]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:15:06.636]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:15:13.969]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 200, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "49.9996ms"}
+[2023-01-26 01:16:01.022]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:16:01.045]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:16:01.046]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:16:01.046]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:16:01.046]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:16:19.151]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 200, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "48.8034ms"}
+[2023-01-26 01:21:55.113]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:21:55.136]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:21:55.137]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:21:55.137]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:21:55.137]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:22:11.108]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/register	{"status": 200, "method": "POST", "path": "/api/user/register", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "51.5568ms"}
+[2023-01-26 01:22:19.597]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/user/user.go:25	query mysql record fail	{"error": "sql: expected 7 destination arguments in Scan, not 1"}
+[2023-01-26 01:22:19.598]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 500, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.2874ms"}
+[2023-01-26 01:29:31.363]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-01-26 01:29:31.387]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-01-26 01:29:31.388]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-01-26 01:29:31.389]	INFO	D:/GoProjects/src/juejin/app/router/router.go:22	initialize routers successfully
+[2023-01-26 01:29:31.389]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-01-26 01:29:33.878]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 200, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "50.7698ms"}
+[2023-01-26 01:29:41.976]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 400, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "0s"}
+[2023-01-26 01:29:49.509]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 400, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "48.6163ms"}
