@@ -13,6 +13,7 @@ func (r *UserRouter) InitUserRouter(router *gin.RouterGroup) gin.IRouter {
 	{
 		UserRouter.POST("/login", userApi.Sign().Login)
 		UserRouter.POST("/register", userApi.Sign().Register)
+		UserRouter.POST("/code", userApi.Sign().SendCode)
 	}
 	return UserRouter
 }

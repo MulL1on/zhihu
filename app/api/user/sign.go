@@ -3,6 +3,7 @@ package user
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/go-redis/redis/v9"
 	g "juejin/app/global"
 	"juejin/app/internal/model/resp"
 	"juejin/app/internal/model/user"
@@ -30,6 +31,15 @@ func (a *SignApi) Register(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "password cannot be null")
 		return
 	}
+	if userSubject.Code == "" {
+		resp.ResponseFail(c, http.StatusBadRequest, "code cannot be null")
+		return
+	}
+
+	if userSubject.Email == "" {
+		resp.ResponseFail(c, http.StatusBadRequest, "email cannot be null")
+		return
+	}
 	err = service.User().User().CheckUserIsExist(userSubject.Username)
 	if err != nil {
 		if err.Error() == "username is already exist" {
@@ -40,11 +50,21 @@ func (a *SignApi) Register(c *gin.Context) {
 			return
 		}
 	}
+	ok, err := service.User().User().CheckCode(c, userSubject.Email, userSubject.Code)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, userSubject.Email)
+		return
+	}
+	if !ok {
+		resp.ResponseFail(c, http.StatusBadRequest, "code incorrect")
+		return
+	}
 	userSubject.Password, err = service.User().User().EncryptPassword(userSubject.Password)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "encrypt password error")
 		return
 	}
+
 	err = service.User().User().CreateUser(userSubject)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "create user record error")
@@ -68,6 +88,7 @@ func (a *SignApi) Login(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "password cannot be null")
 		return
 	}
+
 	err = service.User().User().CheckUserIsExist(userSubject.Username)
 	if err != nil {
 		if err.Error() != "username is already exist" {
@@ -103,4 +124,38 @@ func (a *SignApi) Login(c *gin.Context) {
 		})
 	cookieWriter.Set("x-token", tokenString)
 	resp.ResponseSuccess(c, http.StatusOK, "login successfully")
+}
+
+func (a *SignApi) SendCode(c *gin.Context) {
+	email := c.PostForm("email")
+	if !service.User().User().VerifyEmailFormat(email) {
+		resp.ResponseFail(c, http.StatusBadRequest, "email pattern is incorrect")
+		return
+	}
+	err := service.User().User().CheckMailIsExist(email)
+	if err != nil {
+		if err.Error() == "internal err" {
+			resp.ResponseFail(c, http.StatusInternalServerError, "check mail failed ")
+			return
+		} else if err.Error() == "email is already exist" {
+			resp.ResponseFail(c, http.StatusOK, "mail is already signed")
+			return
+		}
+	}
+	err = g.Rdb.Get(c, fmt.Sprintf("verify_code:%s", email)).Err()
+	if err != nil {
+		if err != redis.Nil {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+			return
+		}
+	} else {
+		resp.ResponseFail(c, http.StatusBadRequest, "send code request too much")
+		return
+	}
+	err = service.User().User().SendCode(c, email)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "send code failed")
+		return
+	}
+	resp.ResponseSuccess(c, http.StatusOK, "send code successfully")
 }

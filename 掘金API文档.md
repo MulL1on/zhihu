@@ -111,7 +111,7 @@ application/json
 
 ```http
 POST /api/user/code
-application/json
+application/x-www-form-urlencoded
 ```
 
 ### header

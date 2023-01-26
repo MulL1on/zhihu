@@ -6,8 +6,9 @@ type Auth struct {
 	Id         int64     `json:"id" form:"id" db:"id"`
 	Username   string    `json:"username" form:"username" db:"username"`
 	Password   string    `json:"password" form:"password" db:"password"`
-	Mail       string    `json:"mail" form:"mail" db:"mail"`
+	Email      string    `json:"email" form:"email" db:"email"`
 	Phone      string    `json:"phone" form:"phone" db:"phone" `
+	Code       string    `json:"code" form:"code" db:"-"`
 	CreateTime time.Time `json:"create_time" form:"create_time" db:"create_time"`
 	UpdateTime time.Time `json:"update_time" form:"update_time" db:"update_time"`
 }
