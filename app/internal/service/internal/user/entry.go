@@ -2,6 +2,10 @@ package user
 
 type Group struct{}
 
-func (g *Group) User() *SUser {
-	return &insUser
+func (g *Group) Auth() *SAuth {
+	return &insAuth
+}
+
+func (g *Group) Info() *SInfo {
+	return &insInfo
 }

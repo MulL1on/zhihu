@@ -25,7 +25,7 @@ func JWTAuthMiddleware() gin.HandlerFunc {
 			})
 		ok := cookieWriter.Get("x-token", &token)
 		if token == "" || !ok {
-			resp.ResponseFail(c, http.StatusUnauthorized, token)
+			resp.ResponseFail(c, http.StatusUnauthorized, "not logged in.")
 			c.Abort()
 			return
 		}
@@ -65,7 +65,7 @@ func JWTAuthMiddleware() gin.HandlerFunc {
 			}
 			mc.ExpiresAt = jwt.NewNumericDate(time.Now().Add(time.Duration(g.Config.Middleware.Jwt.ExpiresTime) * time.Second))
 			newToken, _ := j.GenerateToken(mc)
-			cookieWriter.Set("x-token", newToken)
+			cookieWriter.Set("token", newToken)
 		}
 		c.Set("id", mc.BaseClaims.Id)
 		c.Next()

@@ -2,10 +2,10 @@ package boot
 
 import (
 	"context"
-	"database/sql"
 	"fmt"
 	"github.com/go-redis/redis/v9"
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/jmoiron/sqlx"
 	"go.uber.org/zap"
 	g "juejin/app/global"
 	"time"
@@ -13,7 +13,7 @@ import (
 
 func MysqlDBSetup() {
 	config := g.Config.Database.Mysql
-	db, err := sql.Open("mysql", config.GetDsn())
+	db, err := sqlx.Open("mysql", config.GetDsn())
 	if err != nil {
 		g.Logger.Fatal("initialize mysql failed.", zap.Error(err))
 	}

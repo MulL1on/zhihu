@@ -68,10 +68,9 @@ application/json
 
 ### 返回参数
 
-| 字段名        | 必选 | 类型          | 说明          |
-| ------------- | ---- | ------------- | ------------- |
-| refresh_token | 是   | Bearer $token | refresh_token |
-| token         | 是   | Bearer $token | token         |
+| 字段名 | 必选 | 类型          | 说明  |
+| ------ | ---- | ------------- | ----- |
+| token  | 是   | Bearer $token | token |
 
 ### 返回示例
 

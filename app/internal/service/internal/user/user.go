@@ -3,6 +3,7 @@ package user
 import (
 	"context"
 	"database/sql"
+
 	"fmt"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
@@ -19,14 +20,14 @@ import (
 const EmailCheckRule = `^([A-Za-z0-9_/.-]+)@([0-9a-z\.-]+)\.([a-z\.]{2,6})$`
 const PhoneCheckRule = `^1[3,5,8]\d{9}$`
 
-type SUser struct{}
+type SAuth struct{}
 
-var insUser = SUser{}
+var insAuth = SAuth{}
 
-func (s *SUser) CheckUserIsExist(username string) error {
-	var name string
-	sqlStr := "select username from user_auth where username=?"
-	err := g.MysqlDB.QueryRow(sqlStr, username).Scan(&name)
+func (s *SAuth) CheckUserIsExist(username string) error {
+	var userSubject = &user.Auth{}
+	sqlStr := "select * from user_auth where username=?"
+	err := g.MysqlDB.QueryRowx(sqlStr, username).StructScan(userSubject)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			g.Logger.Error("query mysql record fail", zap.Error(err))
@@ -38,10 +39,10 @@ func (s *SUser) CheckUserIsExist(username string) error {
 	return fmt.Errorf("username is already exist")
 }
 
-func (s *SUser) CheckMailIsExist(email string) error {
-	user := &user.Auth{}
+func (s *SAuth) CheckEmailIsExist(email string) error {
+	userSubject := &user.Auth{}
 	sqlStr := "select * from user_auth where email=?"
-	err := g.MysqlDB.QueryRow(sqlStr, email).Scan(&user)
+	err := g.MysqlDB.QueryRowx(sqlStr, email).StructScan(userSubject)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			g.Logger.Error("internal error", zap.Error(err))
@@ -53,7 +54,7 @@ func (s *SUser) CheckMailIsExist(email string) error {
 	return fmt.Errorf("email is already exist")
 }
 
-func (s *SUser) EncryptPassword(password string) (string, error) {
+func (s *SAuth) EncryptPassword(password string) (string, error) {
 	encryptPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	if err != nil {
 		return "", err
@@ -61,16 +62,30 @@ func (s *SUser) EncryptPassword(password string) (string, error) {
 	return string(encryptPassword), nil
 }
 
-func (s *SUser) CreateUser(userSubject *user.Auth) error {
-	sqlStr := "insert into user_auth (username,password,email,phone,create_time) values (?,?,?,?,?)"
-	_, err := g.MysqlDB.Exec(sqlStr, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now())
+func (s *SAuth) CreateUser(userSubject *user.Auth) error {
+	sqlStr := "insert into user_auth (username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?)"
+	_, err := g.MysqlDB.Exec(sqlStr, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
 	if err != nil {
 		g.Logger.Error("create mysql record failed", zap.Error(err))
 		return err
 	}
+	var id int
+	_ = g.MysqlDB.QueryRow("select id from user_auth where username=?", userSubject.Username).Scan(&id)
+	sqlStr = "insert into user_counter (id) values (?)"
+	_, err = g.MysqlDB.Exec(sqlStr, id)
+	if err != nil {
+		g.Logger.Error("create mysql record failed", zap.Error(err))
+		return err
+	}
+	sqlStr = "insert into user_basic (id) values (?)"
+	_, err = g.MysqlDB.Exec(sqlStr, id)
+	if err != nil {
+		g.Logger.Error("create mysql record failed2", zap.Error(err))
+		return err
+	}
 	return nil
 }
-func (s *SUser) GetEncryptPassword(username string) (string, error) {
+func (s *SAuth) GetEncryptPassword(username string) (string, error) {
 	var pwd string
 	sqlStr := "select password from user_auth where username = ?"
 	err := g.MysqlDB.QueryRow(sqlStr, username).Scan(&pwd)
@@ -80,11 +95,11 @@ func (s *SUser) GetEncryptPassword(username string) (string, error) {
 	}
 	return pwd, nil
 }
-func (s *SUser) CheckPassword(password, encryptPwd string) bool {
+func (s *SAuth) CheckPassword(password, encryptPwd string) bool {
 	err := bcrypt.CompareHashAndPassword([]byte(encryptPwd), []byte(password))
 	return err == nil
 }
-func (s *SUser) GenerateToken(ctx context.Context, user *user.Auth) (string, error) {
+func (s *SAuth) GenerateToken(user *user.Auth) (string, error) {
 	config := g.Config.Middleware.Jwt
 	j := jwt.NewJWT(&jwt.Config{
 		SecretKey:  config.SecretKey,
@@ -106,17 +121,17 @@ func (s *SUser) GenerateToken(ctx context.Context, user *user.Auth) (string, err
 
 }
 
-func (s *SUser) VerifyEmailFormat(email string) bool {
+func (s *SAuth) VerifyEmailFormat(email string) bool {
 	reg := regexp.MustCompile(EmailCheckRule)
 	return reg.MatchString(email)
 }
 
-func (s *SUser) VerifyPhoneFormat(phone string) bool {
+func (s *SAuth) VerifyPhoneFormat(phone string) bool {
 	reg := regexp.MustCompile(PhoneCheckRule)
 	return reg.MatchString(phone)
 }
 
-func (s *SUser) SendCode(ctx context.Context, email string) error {
+func (s *SAuth) SendCode(ctx context.Context, email string) error {
 
 	code := fmt.Sprintf("%05v", rand.New(rand.NewSource(time.Now().UnixNano())).Int31n(100000))
 	err := g.Rdb.Set(ctx, fmt.Sprintf("verify_code:%s", email), code, time.Second*90).Err()
@@ -138,7 +153,7 @@ func (s *SUser) SendCode(ctx context.Context, email string) error {
 	return nil
 }
 
-func (s *SUser) CheckCode(ctx context.Context, email, code string) (bool, error) {
+func (s *SAuth) CheckCode(ctx context.Context, email, code string) (bool, error) {
 	cmd := g.Rdb.Get(ctx, fmt.Sprintf("verify_code:%s", email))
 	err := cmd.Err()
 	if err != nil {
@@ -148,7 +163,7 @@ func (s *SUser) CheckCode(ctx context.Context, email, code string) (bool, error)
 	return code == cmd.Val(), nil
 }
 
-func (s *SUser) AddTokenToBlackList(ctx context.Context, token string) error {
+func (s *SAuth) AddTokenToBlackList(ctx context.Context, token string) error {
 	jwtConfig := g.Config.Middleware.Jwt
 	j := myjwt.NewJWT(&myjwt.Config{SecretKey: jwtConfig.SecretKey})
 	mc, err := j.ParseToken(token)

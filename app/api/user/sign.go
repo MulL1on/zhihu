@@ -12,11 +12,11 @@ import (
 	"net/http"
 )
 
-type SignApi struct{}
+type AuthApi struct{}
 
-var insSign = SignApi{}
+var insAuth = AuthApi{}
 
-func (a *SignApi) Register(c *gin.Context) {
+func (a *AuthApi) Register(c *gin.Context) {
 	var userSubject = &user.Auth{}
 	err := c.BindJSON(&userSubject)
 	if err != nil {
@@ -40,7 +40,7 @@ func (a *SignApi) Register(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "email cannot be null")
 		return
 	}
-	err = service.User().User().CheckUserIsExist(userSubject.Username)
+	err = service.User().Auth().CheckUserIsExist(userSubject.Username)
 	if err != nil {
 		if err.Error() == "username is already exist" {
 			resp.ResponseFail(c, http.StatusBadRequest, "username is already exist")
@@ -50,22 +50,32 @@ func (a *SignApi) Register(c *gin.Context) {
 			return
 		}
 	}
-	ok, err := service.User().User().CheckCode(c, userSubject.Email, userSubject.Code)
+	err = service.User().Auth().CheckEmailIsExist(userSubject.Username)
 	if err != nil {
-		resp.ResponseFail(c, http.StatusInternalServerError, userSubject.Email)
+		if err.Error() == "email is already exist" {
+			resp.ResponseFail(c, http.StatusBadRequest, "email is already exist")
+			return
+		} else {
+			resp.ResponseFail(c, http.StatusInternalServerError, "check email's existence error")
+			return
+		}
+	}
+	ok, err := service.User().Auth().CheckCode(c, userSubject.Email, userSubject.Code)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "check code from redis error")
 		return
 	}
 	if !ok {
 		resp.ResponseFail(c, http.StatusBadRequest, "code incorrect")
 		return
 	}
-	userSubject.Password, err = service.User().User().EncryptPassword(userSubject.Password)
+	userSubject.Password, err = service.User().Auth().EncryptPassword(userSubject.Password)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "encrypt password error")
 		return
 	}
 
-	err = service.User().User().CreateUser(userSubject)
+	err = service.User().Auth().CreateUser(userSubject)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "create user record error")
 		return
@@ -73,7 +83,7 @@ func (a *SignApi) Register(c *gin.Context) {
 	resp.ResponseSuccess(c, http.StatusOK, "create user successfully")
 }
 
-func (a *SignApi) Login(c *gin.Context) {
+func (a *AuthApi) Login(c *gin.Context) {
 	var userSubject = &user.Auth{}
 	err := c.BindJSON(&userSubject)
 	if err != nil {
@@ -89,7 +99,7 @@ func (a *SignApi) Login(c *gin.Context) {
 		return
 	}
 
-	err = service.User().User().CheckUserIsExist(userSubject.Username)
+	err = service.User().Auth().CheckUserIsExist(userSubject.Username)
 	if err != nil {
 		if err.Error() != "username is already exist" {
 			resp.ResponseFail(c, http.StatusInternalServerError, "check username's existence error")
@@ -99,16 +109,21 @@ func (a *SignApi) Login(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "user doesn't exist")
 		return
 	}
-	encryptPwd, err := service.User().User().GetEncryptPassword(userSubject.Username)
+	encryptPwd, err := service.User().Auth().GetEncryptPassword(userSubject.Username)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "get encrypt password failed")
 		return
 	}
-	if !service.User().User().CheckPassword(userSubject.Password, encryptPwd) {
+	if !service.User().Auth().CheckPassword(userSubject.Password, encryptPwd) {
 		resp.ResponseFail(c, http.StatusBadRequest, "invalid password or username")
 		return
 	}
-	tokenString, err := service.User().User().GenerateToken(c, userSubject)
+
+	//获取用户id
+	_ = g.MysqlDB.QueryRow("select id from user_auth where username=?", userSubject.Username).Scan(&userSubject.Id)
+
+	//生成token
+	tokenString, err := service.User().Auth().GenerateToken(userSubject)
 	if err != nil {
 		switch err.Error() {
 		case "internal err":
@@ -126,23 +141,14 @@ func (a *SignApi) Login(c *gin.Context) {
 	resp.ResponseSuccess(c, http.StatusOK, "login successfully")
 }
 
-func (a *SignApi) SendCode(c *gin.Context) {
+func (a *AuthApi) SendCode(c *gin.Context) {
 	email := c.PostForm("email")
-	if !service.User().User().VerifyEmailFormat(email) {
+	if !service.User().Auth().VerifyEmailFormat(email) {
 		resp.ResponseFail(c, http.StatusBadRequest, "email pattern is incorrect")
 		return
 	}
-	err := service.User().User().CheckMailIsExist(email)
-	if err != nil {
-		if err.Error() == "internal err" {
-			resp.ResponseFail(c, http.StatusInternalServerError, "check mail failed ")
-			return
-		} else if err.Error() == "email is already exist" {
-			resp.ResponseFail(c, http.StatusOK, "mail is already signed")
-			return
-		}
-	}
-	err = g.Rdb.Get(c, fmt.Sprintf("verify_code:%s", email)).Err()
+
+	err := g.Rdb.Get(c, fmt.Sprintf("verify_code:%s", email)).Err()
 	if err != nil {
 		if err != redis.Nil {
 			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
@@ -152,7 +158,7 @@ func (a *SignApi) SendCode(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "send code request too much")
 		return
 	}
-	err = service.User().User().SendCode(c, email)
+	err = service.User().Auth().SendCode(c, email)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "send code failed")
 		return
@@ -160,7 +166,7 @@ func (a *SignApi) SendCode(c *gin.Context) {
 	resp.ResponseSuccess(c, http.StatusOK, "send code successfully")
 }
 
-func (a *SignApi) Logout(c *gin.Context) {
+func (a *AuthApi) Logout(c *gin.Context) {
 	var token string
 	cookieConfig := g.Config.App.Cookie
 	cookieWriter := cookie.NewCookieWriter(cookieConfig.Secret,
@@ -169,7 +175,7 @@ func (a *SignApi) Logout(c *gin.Context) {
 			Ctx:    c,
 		})
 	cookieWriter.Get("x-token", &token)
-	err := service.User().User().AddTokenToBlackList(c, token)
+	err := service.User().Auth().AddTokenToBlackList(c, token)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "set redis key fail")
 		return
