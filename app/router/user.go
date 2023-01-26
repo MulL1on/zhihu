@@ -17,3 +17,12 @@ func (r *UserRouter) InitUserRouter(router *gin.RouterGroup) gin.IRouter {
 	}
 	return UserRouter
 }
+
+func (r *UserRouter) InitPrivateUserRouter(router *gin.RouterGroup) gin.IRouter {
+	UserPrivateRouter := router.Group("/user")
+	userApi := api.User()
+	{
+		UserPrivateRouter.GET("/logout", userApi.Sign().Logout)
+	}
+	return UserPrivateRouter
+}

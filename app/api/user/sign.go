@@ -159,3 +159,20 @@ func (a *SignApi) SendCode(c *gin.Context) {
 	}
 	resp.ResponseSuccess(c, http.StatusOK, "send code successfully")
 }
+
+func (a *SignApi) Logout(c *gin.Context) {
+	var token string
+	cookieConfig := g.Config.App.Cookie
+	cookieWriter := cookie.NewCookieWriter(cookieConfig.Secret,
+		cookie.Option{
+			Config: cookieConfig.Cookie,
+			Ctx:    c,
+		})
+	cookieWriter.Get("x-token", &token)
+	err := service.User().User().AddTokenToBlackList(c, token)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "set redis key fail")
+		return
+	}
+	resp.ResponseSuccess(c, http.StatusOK, "log out successfully")
+}

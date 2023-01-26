@@ -10,6 +10,7 @@ import (
 	g "juejin/app/global"
 	"juejin/app/internal/model/user"
 	"juejin/utils/jwt"
+	myjwt "juejin/utils/jwt"
 	"math/rand"
 	"regexp"
 	"time"
@@ -100,14 +101,7 @@ func (s *SUser) GenerateToken(ctx context.Context, user *user.Auth) (string, err
 		g.Logger.Error("generate token failed.", zap.Error(err))
 		return "", fmt.Errorf("internal err")
 	}
-	err = g.Rdb.Set(ctx, fmt.Sprintf("jwt:%d", user.Id), tokenString, time.Duration(config.ExpiresTime)*time.Second).Err()
-	if err != nil {
-		g.Logger.Error("set redis cache failed.",
-			zap.Error(err), zap.String("key", "jwt:[id]"),
-			zap.Int64("id", user.Id),
-		)
-		return "", fmt.Errorf("internal err")
-	}
+
 	return tokenString, nil
 
 }
@@ -152,4 +146,20 @@ func (s *SUser) CheckCode(ctx context.Context, email, code string) (bool, error)
 		return false, err
 	}
 	return code == cmd.Val(), nil
+}
+
+func (s *SUser) AddTokenToBlackList(ctx context.Context, token string) error {
+	jwtConfig := g.Config.Middleware.Jwt
+	j := myjwt.NewJWT(&myjwt.Config{SecretKey: jwtConfig.SecretKey})
+	mc, err := j.ParseToken(token)
+	if err != nil {
+		g.Logger.Error("parse token error", zap.Error(err))
+		return err
+	}
+	err = g.Rdb.Set(ctx, fmt.Sprintf("black_list:%s", token), "", time.Duration(mc.ExpiresAt.Unix()-time.Now().Unix())*time.Second).Err()
+	if err != nil {
+		g.Logger.Error("set redis key failed", zap.Error(err))
+		return err
+	}
+	return nil
 }
