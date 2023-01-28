@@ -2,9 +2,9 @@ package user
 
 import (
 	"github.com/gin-gonic/gin"
-	"juejin/app/internal/model/resp"
 	"juejin/app/internal/model/user"
 	"juejin/app/internal/service"
+	"juejin/utils/common/resp"
 	"net/http"
 )
 
@@ -27,4 +27,20 @@ func (a *InfoApi) GetUserInfo(c *gin.Context) {
 		Basic:   *userBasic,
 	}
 	resp.OkWithData(c, "get user info successfully", infoPack)
+}
+
+func (a *InfoApi) UpdateUserInfo(c *gin.Context) {
+	id, _ := c.Get("id")
+	var userBasic = &user.Basic{}
+	err := c.BindJSON(userBasic)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "bind json error")
+		return
+	}
+	err = service.User().Info().UpdateUserInfo(userBasic, id)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
+	resp.ResponseSuccess(c, http.StatusOK, "update user info successfully")
 }

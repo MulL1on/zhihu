@@ -9,6 +9,7 @@ func ResponseFail(c *gin.Context, code int, message string) {
 	c.JSON(code, gin.H{
 		"code": code,
 		"msg":  message,
+		"ok":   false,
 	})
 }
 
@@ -16,6 +17,7 @@ func ResponseSuccess(c *gin.Context, code int, message string) {
 	c.JSON(code, gin.H{
 		"code": code,
 		"msg":  message,
+		"ok":   true,
 	})
 }
 
@@ -24,5 +26,6 @@ func OkWithData(c *gin.Context, message string, data interface{}) {
 		"status": 200,
 		"msg":    message,
 		"data":   data,
+		"ok":     true,
 	})
 }

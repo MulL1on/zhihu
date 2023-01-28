@@ -22,6 +22,7 @@ func (r *UserRouter) InitPrivateUserRouter(router *gin.RouterGroup) gin.IRouter 
 	UserPrivateRouter := router.Group("/user")
 	userApi := api.User()
 	{
+		UserPrivateRouter.PUT("/info", userApi.Info().UpdateUserInfo)
 		UserPrivateRouter.GET("/info", userApi.Info().GetUserInfo)
 		UserPrivateRouter.GET("/logout", userApi.Auth().Logout)
 	}

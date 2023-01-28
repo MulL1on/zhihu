@@ -5,9 +5,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v9"
 	g "juejin/app/global"
-	"juejin/app/internal/model/resp"
 	"juejin/app/internal/model/user"
 	"juejin/app/internal/service"
+	"juejin/utils/common/resp"
 	"juejin/utils/cookie"
 	"net/http"
 )
@@ -77,7 +77,7 @@ func (a *AuthApi) Register(c *gin.Context) {
 
 	err = service.User().Auth().CreateUser(userSubject)
 	if err != nil {
-		resp.ResponseFail(c, http.StatusInternalServerError, "create user record error")
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 		return
 	}
 	resp.ResponseSuccess(c, http.StatusOK, "create user successfully")
@@ -147,8 +147,18 @@ func (a *AuthApi) SendCode(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "email pattern is incorrect")
 		return
 	}
+	err := service.User().Auth().CheckEmailIsExist(email)
+	if err != nil {
+		if err.Error() == "email is already exist" {
+			resp.ResponseFail(c, http.StatusOK, "email is already exist")
+			return
+		}
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
 
-	err := g.Rdb.Get(c, fmt.Sprintf("verify_code:%s", email)).Err()
+	//判断是否频繁请求发送验证码
+	err = g.Rdb.Get(c, fmt.Sprintf("verify_code:%s", email)).Err()
 	if err != nil {
 		if err != redis.Nil {
 			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
@@ -158,6 +168,7 @@ func (a *AuthApi) SendCode(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusBadRequest, "send code request too much")
 		return
 	}
+
 	err = service.User().Auth().SendCode(c, email)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "send code failed")

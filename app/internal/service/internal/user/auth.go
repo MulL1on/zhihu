@@ -25,9 +25,9 @@ type SAuth struct{}
 var insAuth = SAuth{}
 
 func (s *SAuth) CheckUserIsExist(username string) error {
-	var userSubject = &user.Auth{}
-	sqlStr := "select * from user_auth where username=?"
-	err := g.MysqlDB.QueryRowx(sqlStr, username).StructScan(userSubject)
+	var id string
+	sqlStr := "select username from user_auth where username=?"
+	err := g.MysqlDB.QueryRow(sqlStr, username).Scan(&id)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			g.Logger.Error("query mysql record fail", zap.Error(err))
@@ -40,9 +40,9 @@ func (s *SAuth) CheckUserIsExist(username string) error {
 }
 
 func (s *SAuth) CheckEmailIsExist(email string) error {
-	userSubject := &user.Auth{}
-	sqlStr := "select * from user_auth where email=?"
-	err := g.MysqlDB.QueryRowx(sqlStr, email).StructScan(userSubject)
+	var id string
+	sqlStr := "select id from user_auth where email=?"
+	err := g.MysqlDB.QueryRow(sqlStr, email).Scan(&id)
 	if err != nil {
 		if err != sql.ErrNoRows {
 			g.Logger.Error("internal error", zap.Error(err))
@@ -63,26 +63,40 @@ func (s *SAuth) EncryptPassword(password string) (string, error) {
 }
 
 func (s *SAuth) CreateUser(userSubject *user.Auth) error {
-	sqlStr := "insert into user_auth (username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?)"
-	_, err := g.MysqlDB.Exec(sqlStr, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
+	tx, err := g.MysqlDB.Begin()
 	if err != nil {
-		g.Logger.Error("create mysql record failed", zap.Error(err))
+		if tx != nil {
+			tx.Rollback()
+		}
+		g.Logger.Error("begin trans failed", zap.Error(err))
 		return err
 	}
-	var id int
-	_ = g.MysqlDB.QueryRow("select id from user_auth where username=?", userSubject.Username).Scan(&id)
-	sqlStr = "insert into user_counter (id) values (?)"
-	_, err = g.MysqlDB.Exec(sqlStr, id)
+	sqlStr1 := "insert into user_auth (username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?)"
+	ret1, err := tx.Exec(sqlStr1, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
 	if err != nil {
-		g.Logger.Error("create mysql record failed", zap.Error(err))
+		tx.Rollback()
+		g.Logger.Error("create user sqlStr1 error", zap.Error(err))
 		return err
 	}
-	sqlStr = "insert into user_basic (id) values (?)"
-	_, err = g.MysqlDB.Exec(sqlStr, id)
+
+	id, _ := ret1.LastInsertId()
+
+	sqlStr2 := "insert into user_counter (id) values (?)"
+	_, err = g.MysqlDB.Exec(sqlStr2, id)
 	if err != nil {
-		g.Logger.Error("create mysql record failed2", zap.Error(err))
+		tx.Rollback()
+		g.Logger.Error("create user sqlStr2 failed", zap.Error(err))
 		return err
 	}
+
+	sqlStr3 := "insert into user_basic (id) values (?)"
+	_, err = g.MysqlDB.Exec(sqlStr3, id)
+	if err != nil {
+		tx.Rollback()
+		g.Logger.Error("create user sqlStr3  failed", zap.Error(err))
+		return err
+	}
+	tx.Commit()
 	return nil
 }
 func (s *SAuth) GetEncryptPassword(username string) (string, error) {

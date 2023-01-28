@@ -7,7 +7,7 @@ import (
 	"github.com/golang-jwt/jwt/v4"
 	"go.uber.org/zap"
 	g "juejin/app/global"
-	"juejin/app/internal/model/resp"
+	"juejin/utils/common/resp"
 	"juejin/utils/cookie"
 	myjwt "juejin/utils/jwt"
 	"net/http"
