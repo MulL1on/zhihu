@@ -8,5 +8,6 @@ func main() {
 	boot.LoggerSetup()
 	boot.MysqlDBSetup()
 	boot.RedisSetup()
+	boot.SnowFlakeSetup()
 	boot.ServerSetup()
 }

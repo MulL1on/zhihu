@@ -74,7 +74,7 @@ func (a *AuthApi) Register(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusInternalServerError, "encrypt password error")
 		return
 	}
-
+	userSubject.Id = service.User().Auth().GenerateUid()
 	err = service.User().Auth().CreateUser(userSubject)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")

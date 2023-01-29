@@ -71,26 +71,24 @@ func (s *SAuth) CreateUser(userSubject *user.Auth) error {
 		g.Logger.Error("begin trans failed", zap.Error(err))
 		return err
 	}
-	sqlStr1 := "insert into user_auth (username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?)"
-	ret1, err := tx.Exec(sqlStr1, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
+	sqlStr1 := "insert into user_auth (id,username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?,?)"
+	_, err = tx.Exec(sqlStr1, userSubject.Id, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("create user sqlStr1 error", zap.Error(err))
 		return err
 	}
 
-	id, _ := ret1.LastInsertId()
-
-	sqlStr2 := "insert into user_counter (id) values (?)"
-	_, err = g.MysqlDB.Exec(sqlStr2, id)
+	sqlStr2 := "insert into user_counter (user_id) values (?)"
+	_, err = tx.Exec(sqlStr2, userSubject.Id)
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("create user sqlStr2 failed", zap.Error(err))
 		return err
 	}
 
-	sqlStr3 := "insert into user_basic (id) values (?)"
-	_, err = g.MysqlDB.Exec(sqlStr3, id)
+	sqlStr3 := "insert into user_basic (user_id) values (?)"
+	_, err = tx.Exec(sqlStr3, userSubject.Id)
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("create user sqlStr3  failed", zap.Error(err))
@@ -191,4 +189,8 @@ func (s *SAuth) AddTokenToBlackList(ctx context.Context, token string) error {
 		return err
 	}
 	return nil
+}
+
+func (s *SAuth) GenerateUid() int64 {
+	return g.SfNode.Generate().Int64()
 }

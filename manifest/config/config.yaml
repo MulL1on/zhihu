@@ -57,3 +57,6 @@ server:
   port: 8080
   readTimeout: 60s
   writeTimeout: 60s
+
+snowflake:
+  machineId: 1
