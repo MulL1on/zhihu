@@ -37,4 +37,5 @@ type Counter struct {
 	PostArticleCount        int   `json:"post_article_count" form:"post_article_count" db:"post_article_count"`
 	PostShortmsgCount       int   `json:"post_shortmsg_count" form:"post_shortmsg_count" db:"post_shortmsg_count"`
 	SelectOnlineCourseCount int   `json:"select_online_course_count" form:"select_online_course_count" db:"select_online_course_count"`
+	CollectionSetCount      int   `json:"collection_set_count" form:"collection_set_count"`
 }

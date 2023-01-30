@@ -8,13 +8,13 @@ import (
 type DraftRouter struct{}
 
 func (r *DraftRouter) InitDraftRouter(router *gin.RouterGroup) gin.IRouter {
-	DraftRouter := router.Group("/content/draft")
+	draftRouter := router.Group("/content/draft")
 	draftApi := api.Draft()
 	{
-		DraftRouter.POST("/", draftApi.Audit().CreateDraft)
-		DraftRouter.PUT("/", draftApi.Audit().UpdateDraft)
-		DraftRouter.GET("/", draftApi.Audit().GetDraftDetail)
-		DraftRouter.DELETE("/", draftApi.Audit().DeleteDraft)
+		draftRouter.POST("/", draftApi.Audit().CreateDraft)
+		draftRouter.PUT("/", draftApi.Audit().UpdateDraft)
+		draftRouter.GET("/detail", draftApi.Audit().GetDraftDetail)
+		draftRouter.DELETE("/", draftApi.Audit().DeleteDraft)
 	}
-	return DraftRouter
+	return draftRouter
 }

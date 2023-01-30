@@ -24,7 +24,7 @@ func (a *PublishApi) Publish(c *gin.Context) {
 	err := service.Draft().Audit().CheckAuth(draftId, userId)
 	if err != nil {
 		if err.Error() == "no such draft" {
-			resp.ResponseFail(c, http.StatusOK, "no such draft")
+			resp.ResponseFail(c, http.StatusInternalServerError, "no such draft")
 			return
 		}
 		if err.Error() == "unauthorized" {

@@ -1,6 +1,9 @@
 package article
 
-import "time"
+import (
+	"juejin/app/internal/model/user"
+	"time"
+)
 
 type Article struct {
 	Content      string    `json:"content"`
@@ -11,4 +14,10 @@ type Article struct {
 	UserId       string    `json:"user_id"`
 	TagsIds      []string  `json:"tags_ids"`
 	PublishTime  time.Time `json:"publish_time"`
+}
+
+type Brief struct {
+	ArticleId   string      `json:"article_id"`
+	ArticleInfo *Article    `json:"article_info"`
+	AuthorInfo  *user.Basic `json:"author_info"`
 }

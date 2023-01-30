@@ -433,12 +433,12 @@ application/json
 
 # 收藏
 
-## 新建/修改收藏夹
+## 新建收藏夹
 
 ### 请求路径
 
 ```http
-PUT /api/collectionset
+POST /api/collectionset
 application/json
 ```
 
@@ -450,12 +450,11 @@ application/json
 
 ### 请求参数
 
-| 名称            | 位置 | 必选               | 类型   | 说明                   |
-| --------------- | ---- | ------------------ | ------ | ---------------------- |
-| collection_id   | body | 否（修改时为必选） | string | 收藏夹id               |
-| collection_name | body | 是                 | string | 收藏夹名称             |
-| description     | body | 否                 | string | 简介                   |
-| permission      | body | 是                 | number | 公开性：0-公开、1-私密 |
+| 名称            | 位置 | 必选 | 类型   | 说明                   |
+| --------------- | ---- | ---- | ------ | ---------------------- |
+| collection_name | body | 是   | string | 收藏夹名称             |
+| description     | body | 否   | string | 简介                   |
+| permission      | body | 是   | number | 公开性：0-公开、1-私密 |
 
 ### 返回参数
 
@@ -488,7 +487,7 @@ application/json
 ### 请求路径
 
 ```http
-PUT /api/collection
+POST /api/collection
 application/json
 ```
 
@@ -503,7 +502,7 @@ application/json
 | 名称                 | 位置 | 必选 | 类型   | 说明         |
 | -------------------- | ---- | ---- | ------ | ------------ |
 | article_id           | body | 是   | string | 文章id       |
-| select_colection_ids | body | 是   | string | 选中的收藏夹 |
+| select_collection_id | body | 是   | string | 选中的收藏夹 |
 
 ### 返回参数
 
@@ -518,7 +517,72 @@ application/json
 }
 ```
 
+## 获取收藏夹详情
 
+### 请求路径
+
+```http
+GET /api/collection/detail
+```
+
+### header
+
+| 名称          | 必选 | 数值          | 说明              |
+| ------------- | ---- | ------------- | ----------------- |
+| Authorization | 是   | Bearer $token | 用户身份验证token |
+
+### 请求参数
+
+| 名称          | 位置  | 必选 | 类型   | 说明         |
+| ------------- | ----- | ---- | ------ | ------------ |
+| collection_id | query | 是   | string | 收藏夹id     |
+| limit         | query | 是   | string | 显示最大数量 |
+
+### 返回参数
+
+| 名称            | 必选 | 类型       | 说明             |
+| --------------- | ---- | ---------- | ---------------- |
+| articles        | 是   | array      | 收藏的文章的信息 |
+| collection_info | 是   | 复杂结构体 | 收藏夹的信息     |
+
+### 返回示例
+
+```json
+{
+   "status":200
+   "msg":"get collection detail successfully"
+   "data": {
+      "articles":[
+      0:{
+          "article_id":string
+          "article_major":{
+                "title":string
+                "brief_content":string
+                "cover_img":string
+                ""
+          }
+          "article_counter":{
+                 "view_count":number
+                 "collect_count":number
+                 "comment_count":number
+                 "create_time":timestamp
+          }
+          "tag_ids":array
+          "author_user_info":{user_info}
+      }
+      ]
+    "collection_info":{
+        "collection_id":string
+        "collection_name":string
+        "user_id":string
+        "description":string
+        "permission":number
+        "post_article_count":number
+        "update_time":timestamp
+    }
+   }
+}
+```
 
 # 个人详情信息
 

@@ -29,19 +29,21 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 		g.Logger.Error("publish article sqlStr1 error", zap.Error(err))
 		return err
 	}
-	affRows1, err := ret1.RowsAffected()
-	if err != nil {
-		tx.Rollback()
-		g.Logger.Error("publish article ret1.RowsAffected error", zap.Error(err))
-	}
+
 	id, _ := ret1.LastInsertId()
 	articleId := strconv.FormatInt(id, 10)
 	sqlStr2 := "update tag set context_id=? where context_id=? "
-	_, err = tx.Exec(sqlStr2, articleId, draft.DraftId)
+	ret2, err := tx.Exec(sqlStr2, articleId, draft.DraftId)
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("insert article's tags error", zap.Error(err))
 		return err
+	}
+
+	affRows2, err := ret2.RowsAffected()
+	if err != nil {
+		tx.Rollback()
+		g.Logger.Error("publish article ret2.RowsAffected error", zap.Error(err))
 	}
 
 	sqlStr3 := "delete from draft where draft_id=?"
@@ -51,12 +53,22 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 		g.Logger.Error("insert article's tags error", zap.Error(err))
 		return err
 	}
+
 	affRows3, err := ret3.RowsAffected()
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("publish article ret3.RowsAffected error", zap.Error(err))
 	}
-	if !(affRows1 == 1 && affRows3 == 1) {
+
+	sqlStr4 := "insert into article_counter (article_id) values (?)"
+	_, err = tx.Exec(sqlStr4, articleId)
+	if err != nil {
+		tx.Rollback()
+		g.Logger.Error("publish article sqlStr4 error", zap.Error(err))
+		return err
+	}
+
+	if !(affRows2 > 0 && affRows3 == 1) {
 		tx.Rollback()
 		return fmt.Errorf("internal eror")
 	}

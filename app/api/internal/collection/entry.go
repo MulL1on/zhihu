@@ -1,9 +1,9 @@
-package article
+package collection
 
 type Group struct{}
 
-func (g *Group) Edit() *PublishApi {
-	return &insPublish
+func (g *Group) Edit() *EditApi {
+	return &insEdit
 }
 
 func (g *Group) Info() *InfoApi {

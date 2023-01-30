@@ -4,4 +4,5 @@ type Group struct {
 	UserRouter
 	DraftRouter
 	ArticleRouter
+	CollectionRouter
 }

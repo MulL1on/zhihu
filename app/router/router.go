@@ -13,6 +13,8 @@ func InitRouter() *gin.Engine {
 
 	publicGroup := r.Group("/api")
 	{
+		routerGroup.InitArticleRouter(publicGroup)
+
 		routerGroup.InitUserRouter(publicGroup)
 	}
 
@@ -21,7 +23,7 @@ func InitRouter() *gin.Engine {
 	{
 		routerGroup.InitDraftRouter(privateGroup)
 		routerGroup.InitPrivateUserRouter(privateGroup)
-		routerGroup.InitArticleRouter(privateGroup)
+		routerGroup.InitCollectionPrivateRouter(privateGroup)
 	}
 	g.Logger.Info("initialize routers successfully")
 	return r

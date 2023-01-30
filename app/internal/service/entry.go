@@ -2,16 +2,18 @@ package service
 
 import (
 	"juejin/app/internal/service/internal/article"
+	"juejin/app/internal/service/internal/collection"
 	"juejin/app/internal/service/internal/draft"
 	"juejin/app/internal/service/internal/tag"
 	"juejin/app/internal/service/internal/user"
 )
 
 var (
-	insUser    = user.Group{}
-	insDraft   = draft.Group{}
-	insArticle = article.Group{}
-	insTag     = tag.Group{}
+	insUser       = user.Group{}
+	insDraft      = draft.Group{}
+	insArticle    = article.Group{}
+	insTag        = tag.Group{}
+	insCollection = collection.Group{}
 )
 
 func User() *user.Group {
@@ -28,4 +30,8 @@ func Article() *article.Group {
 
 func Tag() *tag.Group {
 	return &insTag
+}
+
+func Collection() *collection.Group {
+	return &insCollection
 }

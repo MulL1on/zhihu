@@ -8,10 +8,11 @@ import (
 type ArticleRouter struct{}
 
 func (r *ArticleRouter) InitArticleRouter(router *gin.RouterGroup) gin.IRouter {
-	ArticleRouter := router.Group("/content/article")
+	articleRouter := router.Group("/content/article")
 	articleApi := api.Article()
 	{
-		ArticleRouter.POST("/", articleApi.Edit().Publish)
+		articleRouter.GET("/detail", articleApi.Info().GetArticleDetail)
+		articleRouter.POST("/", articleApi.Edit().Publish)
 	}
-	return ArticleRouter
+	return articleRouter
 }
