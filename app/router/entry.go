@@ -5,4 +5,5 @@ type Group struct {
 	DraftRouter
 	ArticleRouter
 	CollectionRouter
+	FollowerRouter
 }

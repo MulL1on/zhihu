@@ -13,7 +13,11 @@ type InfoApi struct{}
 var insInfo = InfoApi{}
 
 func (a *InfoApi) GetUserInfo(c *gin.Context) {
-	id, _ := c.Get("id")
+	id, ok := c.Get("id")
+	if !ok {
+		resp.ResponseFail(c, http.StatusUnauthorized, "not log in")
+		return
+	}
 
 	var userBasic = &user.Basic{}
 	var userCounter = &user.Counter{}
@@ -30,7 +34,11 @@ func (a *InfoApi) GetUserInfo(c *gin.Context) {
 }
 
 func (a *InfoApi) UpdateUserInfo(c *gin.Context) {
-	id, _ := c.Get("id")
+	id, ok := c.Get("id")
+	if !ok {
+		resp.ResponseFail(c, http.StatusUnauthorized, "not log in")
+		return
+	}
 	var userBasic = &user.Basic{}
 	err := c.BindJSON(userBasic)
 	if err != nil {

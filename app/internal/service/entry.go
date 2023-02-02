@@ -4,6 +4,7 @@ import (
 	"juejin/app/internal/service/internal/article"
 	"juejin/app/internal/service/internal/collection"
 	"juejin/app/internal/service/internal/draft"
+	"juejin/app/internal/service/internal/follower"
 	"juejin/app/internal/service/internal/tag"
 	"juejin/app/internal/service/internal/user"
 )
@@ -14,6 +15,7 @@ var (
 	insArticle    = article.Group{}
 	insTag        = tag.Group{}
 	insCollection = collection.Group{}
+	insFollow     = follower.Group{}
 )
 
 func User() *user.Group {
@@ -34,4 +36,8 @@ func Tag() *tag.Group {
 
 func Collection() *collection.Group {
 	return &insCollection
+}
+
+func Follower() *follower.Group {
+	return &insFollow
 }

@@ -52,21 +52,21 @@ func (a *InfoApi) GetCollectedArticle(c *gin.Context) {
 	if len(*idList) != 0 {
 		for k, v := range *idList {
 			var articleSubject = &article.Article{}
-			var uBasic = &user.Basic{}
+			var uInfo = &user.InfoPack{}
 			var articleBrief = &article.Brief{}
 			err = service.Article().Info().GetArticleMajor(v, articleSubject)
 			if err != nil {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return
 			}
-			err = service.User().Info().GetUserBasic(uBasic, articleSubject.UserId)
+			err = service.User().Info().GetUserInfo(&uInfo.Basic, &uInfo.Counter, articleSubject.UserId)
 			if err != nil {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return
 			}
 			articleBrief.ArticleInfo = articleSubject
 			articleBrief.ArticleId = articleSubject.ArticleId
-			articleBrief.AuthorInfo = uBasic
+			articleBrief.AuthorInfo = uInfo
 			articleBriefList[k] = articleBrief
 		}
 	}

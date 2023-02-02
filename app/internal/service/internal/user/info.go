@@ -37,7 +37,7 @@ func (s *SInfo) GetUserInfo(userBasic *user.Basic, userCounter *user.Counter, id
 }
 
 func (s *SInfo) UpdateUserInfo(userBasic *user.Basic, id any) error {
-	sqlStr := "update user_basic set avatar=?,description=?,company=?,job_title=? where user_id=?"
+	sqlStr := "update user_basic set avatar=?,description=?,company=?,job_title=? usern where user_id=?"
 	_, err := g.MysqlDB.Exec(sqlStr, userBasic.Avatar, userBasic.Description, userBasic.Company, userBasic.JobTitle, id)
 	if err != nil {
 		g.Logger.Error("update user info error", zap.Error(err))

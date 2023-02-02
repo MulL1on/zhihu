@@ -24,6 +24,7 @@ func InitRouter() *gin.Engine {
 		routerGroup.InitDraftRouter(privateGroup)
 		routerGroup.InitPrivateUserRouter(privateGroup)
 		routerGroup.InitCollectionPrivateRouter(privateGroup)
+		routerGroup.InitFollowerRouter(privateGroup)
 	}
 	g.Logger.Info("initialize routers successfully")
 	return r

@@ -66,7 +66,7 @@ func (s *SEdit) AddSelectArticle(collectionId int64, articleId string) error {
 		g.Logger.Error("add select article sqlStr1 error", zap.Error(err))
 		return err
 	}
-	sqlStr2 := "update article_counter set collec_count=collec_count+1 where article_id=? "
+	sqlStr2 := "update article_counter set collect_count=collect_count+1 where article_id=? "
 	ret2, err := tx.Exec(sqlStr2, articleId)
 	if err != nil {
 		tx.Rollback()
@@ -117,6 +117,7 @@ func (s *SEdit) CheckViewAuth(collectionId int64, userId any) error {
 	}
 	if permissionRecorded == 0 {
 		if userId != userIdRecorded {
+			g.Logger.Error(fmt.Sprintf("check view auth error permission:%d", permissionRecorded))
 			return fmt.Errorf("unauthorized")
 		}
 		return nil

@@ -20,6 +20,7 @@ type Auth struct {
 
 type Basic struct {
 	Id          int64  `json:"-" form:"id" db:"id"`
+	Username    string `json:"username" form:"username" db:"username"`
 	Avatar      string `json:"avatar" form:"avatar" db:"avatar"`
 	Company     string `json:"company" form:"company" db:"company"`
 	Description string `json:"description" form:"description" db:"description"`

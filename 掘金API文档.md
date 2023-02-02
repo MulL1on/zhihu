@@ -700,7 +700,7 @@ mutipart/form-data
 ### 请求路径
 
 ```http
-POST /api/course/bokklet/list_by_category
+POST /api/course/booklet/list_by_category
 aplication/json
 ```
 
@@ -1411,7 +1411,7 @@ application/json
 ```json
 {
 "status":200
- "message":"do follow successfully"
+ "message":"do follower successfully"
 }
 ```
 
@@ -1447,7 +1447,7 @@ application/json
 ```json
 {
 "status":200
- "message":"undo follow successfully"
+ "message":"undo follower successfully"
 }
 ```
 
