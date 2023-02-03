@@ -3,6 +3,7 @@ package service
 import (
 	"juejin/app/internal/service/internal/article"
 	"juejin/app/internal/service/internal/collection"
+	"juejin/app/internal/service/internal/comment"
 	"juejin/app/internal/service/internal/draft"
 	"juejin/app/internal/service/internal/follower"
 	"juejin/app/internal/service/internal/tag"
@@ -16,6 +17,7 @@ var (
 	insTag        = tag.Group{}
 	insCollection = collection.Group{}
 	insFollow     = follower.Group{}
+	insComment    = comment.Group{}
 )
 
 func User() *user.Group {
@@ -40,4 +42,8 @@ func Collection() *collection.Group {
 
 func Follower() *follower.Group {
 	return &insFollow
+}
+
+func Comment() *comment.Group {
+	return &insComment
 }

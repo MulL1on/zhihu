@@ -1953,3 +1953,133 @@
 [2023-02-03 01:36:06.263]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
 [2023-02-03 01:36:06.266]	INFO	D:/GoProjects/src/juejin/app/router/router.go:29	initialize routers successfully
 [2023-02-03 01:36:06.266]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-03 01:36:22.317]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-03 01:36:22.343]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-03 01:36:22.344]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-03 01:36:22.344]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-03 01:36:22.347]	INFO	D:/GoProjects/src/juejin/app/router/router.go:29	initialize routers successfully
+[2023-02-03 01:36:22.347]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-03 01:36:25.933]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/follower/followee	{"status": 200, "method": "DELETE", "path": "/api/follower/followee", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "7.4409ms"}
+[2023-02-04 02:04:28.889]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:04:28.918]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:04:28.920]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:04:28.920]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:04:28.928]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:04:28.928]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:05:11.767]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 200, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "52.1172ms"}
+[2023-02-04 02:07:45.285]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 200, "method": "POST", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "9.4779ms"}
+[2023-02-04 02:12:11.895]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:12:11.921]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:12:11.922]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:12:11.922]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:12:11.926]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:12:11.926]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:12:45.660]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 200, "method": "POST", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "4.3551ms"}
+[2023-02-04 02:15:57.368]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 500, "method": "DELETE", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "4.2296ms"}
+[2023-02-04 02:16:01.569]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:71	delete comment get article id error	{"error": "Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1"}
+[2023-02-04 02:16:01.570]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 500, "method": "DELETE", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.9351ms"}
+[2023-02-04 02:18:26.093]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:18:26.118]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:18:26.120]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:18:26.120]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:18:26.123]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:18:26.123]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:18:37.234]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 200, "method": "DELETE", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.1253ms"}
+[2023-02-04 02:20:12.029]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:134	post reply sqlStr1 error	{"error": "Error 1264 (22003): Out of range value for column 'user_id' at row 1"}
+[2023-02-04 02:20:12.029]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 500, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.5506ms"}
+[2023-02-04 02:22:32.176]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:22:32.201]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:22:32.202]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:22:32.202]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:22:32.208]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:22:32.208]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:22:34.815]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:134	post reply sqlStr1 error	{"error": "Error 1452 (23000): Cannot add or update a child row: a foreign key constraint fails (`juejin`.`reply`, CONSTRAINT `reply_ibfk_1` FOREIGN KEY (`parent_reply_id`) REFERENCES `reply` (`reply_id`) ON DELETE CASCADE ON UPDATE CASCADE)"}
+[2023-02-04 02:22:34.816]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 500, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.6736ms"}
+[2023-02-04 02:24:37.484]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.5141ms"}
+[2023-02-04 02:25:33.600]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.1385ms"}
+[2023-02-04 02:25:47.078]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:25:47.101]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:25:47.102]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:25:47.102]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:25:47.105]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:25:47.105]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:25:59.434]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.8955ms"}
+[2023-02-04 02:26:47.711]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:164	delete reply get comment id error	{"error": "Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1"}
+[2023-02-04 02:26:47.712]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 500, "method": "DELETE", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.1282ms"}
+[2023-02-04 02:27:34.724]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:27:34.747]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:27:34.748]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:27:34.748]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:27:34.750]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:27:34.751]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:27:41.696]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "DELETE", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "6.2142ms"}
+[2023-02-04 02:27:57.063]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 200, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.6927ms"}
+[2023-02-04 02:28:43.373]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:28:43.398]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:28:43.399]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:28:43.399]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:28:43.402]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:28:43.402]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:28:50.037]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 200, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.3083ms"}
+[2023-02-04 02:28:58.064]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:241	get reply list error	{"error": "sql: expected 10 destination arguments in Scan, not 11"}
+[2023-02-04 02:28:58.065]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.2113ms"}
+[2023-02-04 02:30:19.850]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:30:19.874]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:30:19.875]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:30:19.875]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:30:19.878]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:30:19.878]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:30:23.785]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:336	get user counter error	{"error": "sql: Scan error on column index 9, name \"collection_set_count\": converting NULL to int is unsupported"}
+[2023-02-04 02:30:23.785]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.1275ms"}
+[2023-02-04 02:31:23.212]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:336	get user counter error	{"error": "sql: no rows in result set"}
+[2023-02-04 02:31:23.212]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.0016ms"}
+[2023-02-04 02:32:56.758]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:32:56.782]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:32:56.783]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:32:56.783]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:32:56.787]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:32:56.787]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:33:11.588]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:33:11.613]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:33:11.614]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:33:11.614]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:33:11.617]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:33:11.617]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:33:14.775]	ERROR	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:55	[Recover from panic]	{"error": "interface conversion: interface {} is string, not int64", "request": "GET /api/comment/list HTTP/1.1\r\nHost: localhost:8080\r\nAccept: */*\r\nAccept-Encoding: gzip, deflate, br\r\nConnection: keep-alive\r\nContent-Length: 484\r\nContent-Type: multipart/form-data; boundary=--------------------------608475704337905934607994\r\nCookie: x-token=ImV5SmhiR2NpT2lKSVV6STFOaUlzSW5SNWNDSTZJa3BYVkNKOS5leUpDZFdabVpYSlVhVzFsSWpvNE5qUXdNQ3dpYVhOeklqb2lUWGxLZFdWcWFXNHVZMjl0SWl3aVpYaHdJam94TmpjMk1EVXlNekV4TENKdVltWWlPakUyTnpVME5EYzFNVEVzSWtsa0lqb3hOakl4TVRZeE9UTTVNemswTmpJNU5qTXlMQ0pEY21WaGRHVlVhVzFsSWpvaU1EQXdNUzB3TVMwd01WUXdNRG93TURvd01Gb2lMQ0pWY0dSaGRHVlVhVzFsSWpvaU1EQXdNUzB3TVMwd01WUXdNRG93TURvd01Gb2lmUS5oUExGTTFFbEZhdUJFWHVTRkkweG9Pa2JDOE5NYnYyendjY3NTaFpsQ2JrIg==|1675447511767795600|af08bdb3391b5957c483a862d1341a9c0cadf2c05c585f45f01e2426a4ed41d4\r\nUser-Agent: Apifox/1.0.0 (https://www.apifox.cn)\r\n\r\n"}
+[2023-02-04 02:33:14.775]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "7.1939ms"}
+[2023-02-04 02:33:31.858]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:33:31.883]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:33:31.884]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:33:31.884]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:33:31.887]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:33:31.887]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:33:35.497]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:336	get user counter error
+[2023-02-04 02:33:35.497]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "6.006ms"}
+[2023-02-04 02:34:15.795]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:34:15.818]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:34:15.820]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:34:15.821]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:34:15.823]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:34:15.823]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:34:18.045]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:336	get user counter error	{"error": "sql: no rows in result set"}
+[2023-02-04 02:34:18.045]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.8596ms"}
+[2023-02-04 02:37:22.393]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:37:22.417]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:37:22.419]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:37:22.419]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:37:22.421]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:37:22.422]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:37:38.874]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 200, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "6.8649ms"}
+[2023-02-04 02:40:31.092]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.8453ms"}
+[2023-02-04 02:40:37.173]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:338	get user counter error	{"error": "sql: no rows in result set"}
+[2023-02-04 02:40:37.173]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.6074ms"}
+[2023-02-04 02:41:47.098]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:338	get user counter error	{"error": "sql: no rows in result set"}
+[2023-02-04 02:41:47.099]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 500, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.0055ms"}
+[2023-02-04 02:42:21.286]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 200, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.8586ms"}
+[2023-02-04 02:44:39.762]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-04 02:44:39.784]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-04 02:44:39.786]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-04 02:44:39.786]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	init snowflake successfully
+[2023-02-04 02:44:39.789]	INFO	D:/GoProjects/src/juejin/app/router/router.go:30	initialize routers successfully
+[2023-02-04 02:44:39.789]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-04 02:44:54.030]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/list	{"status": 200, "method": "GET", "path": "/api/comment/list", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "7.2244ms"}

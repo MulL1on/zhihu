@@ -6,4 +6,5 @@ type Group struct {
 	ArticleRouter
 	CollectionRouter
 	FollowerRouter
+	CommentRouter
 }

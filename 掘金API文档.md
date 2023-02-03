@@ -1170,9 +1170,9 @@ application/json
       "is_digg":boolean
       "digg_count":number
       "item_id":string      //这里是文章id
-      "item_type":number
+      "item_type":number        //这里是2
       "reply_comment_id":string   //所属评论的id
-      "reply_to_user_id":string   //这里是2
+      "reply_to_user_id":string  
       "user_id":string 
 }
   "reply_info":{
