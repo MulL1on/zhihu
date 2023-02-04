@@ -59,7 +59,7 @@ func (a *InfoApi) GetCollectedArticle(c *gin.Context) {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return
 			}
-			err = service.User().Info().GetUserInfo(&uInfo.Basic, &uInfo.Counter, articleSubject.UserId)
+			err = service.User().Info().GetUserInfo(c, &uInfo.Basic, &uInfo.Counter, articleSubject.UserId)
 			if err != nil {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return

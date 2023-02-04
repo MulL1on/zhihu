@@ -4,10 +4,12 @@ import (
 	"juejin/app/internal/service/internal/article"
 	"juejin/app/internal/service/internal/collection"
 	"juejin/app/internal/service/internal/comment"
+	"juejin/app/internal/service/internal/digg"
 	"juejin/app/internal/service/internal/draft"
 	"juejin/app/internal/service/internal/follower"
 	"juejin/app/internal/service/internal/tag"
 	"juejin/app/internal/service/internal/user"
+	"juejin/app/internal/service/internal/view"
 )
 
 var (
@@ -18,6 +20,8 @@ var (
 	insCollection = collection.Group{}
 	insFollow     = follower.Group{}
 	insComment    = comment.Group{}
+	insView       = view.Group{}
+	insDigg       = digg.Group{}
 )
 
 func User() *user.Group {
@@ -46,4 +50,12 @@ func Follower() *follower.Group {
 
 func Comment() *comment.Group {
 	return &insComment
+}
+
+func View() *view.Group {
+	return &insView
+}
+
+func Digg() *digg.Group {
+	return &insDigg
 }

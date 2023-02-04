@@ -1,8 +1,10 @@
 package comment
 
 import (
+	"context"
 	"database/sql"
 	"fmt"
+	"github.com/go-redis/redis/v9"
 	"go.uber.org/zap"
 	g "juejin/app/global"
 	"juejin/app/internal/model/comment"
@@ -209,7 +211,7 @@ func (s *SReply) DeleteReply(replyId string) error {
 	return nil
 }
 
-func (s *SReview) GetCommentInfo(c *comment.Comment, commentId string) error {
+func (s *SReview) GetCommentInfo(ctx context.Context, c *comment.Comment, commentId string) error {
 	sqlStr := "select comment_id, comment_content, digg_count, reply_count, create_time, item_id, item_type, user_id from comment where comment_id=?"
 	err := g.MysqlDB.QueryRow(sqlStr, commentId).Scan(&c.CommentId, &c.CommentContent, &c.DiggCount, &c.ReplyCount, &c.CreatTime, &c.ItemId, &c.ItemType, &c.UserId)
 	if err != nil {
@@ -219,10 +221,12 @@ func (s *SReview) GetCommentInfo(c *comment.Comment, commentId string) error {
 		g.Logger.Error("get comment info error", zap.Error(err))
 		return err
 	}
+	err = getCommentCounterCache(ctx, c, commentId)
 	return nil
 }
 
-func (s *SReply) GetReplyInfo(commentId string) (*[]comment.ReplyInfo, error) {
+func (s *SReply) GetReplyInfo(ctx context.Context, commentId string) (*[]comment.ReplyInfo, error) {
+	//获取回复id
 	sqlStr1 := "select reply_id, reply_comment_id, reply_content, user_id, item_id, item_type, digg_count, create_time, parent_reply_id, reply_user_id from reply where reply_comment_id=?"
 	rows, err := g.MysqlDB.Query(sqlStr1, commentId)
 	if err != nil {
@@ -230,6 +234,7 @@ func (s *SReply) GetReplyInfo(commentId string) (*[]comment.ReplyInfo, error) {
 		return nil, err
 	}
 	defer rows.Close()
+
 	var list = make([]comment.ReplyInfo, 0)
 	for rows.Next() {
 		var r comment.ReplyInfo
@@ -241,6 +246,15 @@ func (s *SReply) GetReplyInfo(commentId string) (*[]comment.ReplyInfo, error) {
 			g.Logger.Error("get reply list error", zap.Error(err))
 			return nil, err
 		}
+
+		//获取缓存中的点赞数
+		err = getReplyCounterCache(ctx, &r.ReplyInfo, r.ReplyInfo.ReplyId)
+		if err != nil {
+			g.Logger.Error("get  reply counter cache error ", zap.Error(err))
+			return nil, err
+		}
+
+		//获取父回复
 		if r.ReplyInfo.ReplyToReplyId != "0" {
 			err = g.MysqlDB.QueryRow(sqlStr1).Scan(&r.ParentReplyInfo.ReplyId, &r.ParentReplyInfo, &r.ParentReplyInfo.ReplyContent, &r.ParentReplyInfo.UserId, &r.ParentReplyInfo.ItemId, &r.ParentReplyInfo.ItemType, &r.ParentReplyInfo.DiggCount, &r.ParentReplyInfo.CreatTime, &r.ParentReplyInfo.ReplyToReplyId, &r.ParentReplyInfo.ReplyToUserId)
 			if err != nil {
@@ -256,6 +270,11 @@ func (s *SReply) GetReplyInfo(commentId string) (*[]comment.ReplyInfo, error) {
 		if r.ReplyInfo.ReplyToUserId != "0" {
 			err = GetUserInfo(&r.ReplyToUserInfo.Basic, &r.ReplyToUserInfo.Counter, r.ReplyInfo.ReplyToUserId)
 			if err != nil {
+				return nil, err
+			}
+			err = getReplyCounterCache(ctx, &r.ReplyInfo, r.ReplyInfo.ReplyId)
+			if err != nil {
+				g.Logger.Error("get  parent reply counter cache error ", zap.Error(err))
 				return nil, err
 			}
 		}
@@ -342,6 +361,48 @@ func GetUserInfo(userBasic *user.Basic, userCounter *user.Counter, id any) error
 	err = g.MysqlDB.QueryRow(sqlStr, id).Scan(&userBasic.Description, &userBasic.Avatar, &userBasic.Company, &userBasic.JobTitle)
 	if err != nil {
 		g.Logger.Error("get user basic error", zap.Error(err))
+		return err
+	}
+	return nil
+}
+
+func getCommentCounterCache(ctx context.Context, comment *comment.Comment, id any) error {
+	key := "comment_counter"
+	field1 := fmt.Sprintf("{%d:digg}", id)
+	cmd := g.Rdb.HMGet(ctx, key, field1)
+	err := cmd.Err()
+	if err != nil {
+		if err != redis.Nil {
+			g.Rdb.HSet(ctx, key, field1, comment.DiggCount)
+			g.Logger.Error("get user counter cache error", zap.Error(err))
+			return err
+		}
+		return nil
+	}
+	err = cmd.Scan(&comment.DiggCount)
+	if err != nil {
+		g.Logger.Error("get user counter cache error", zap.Error(err))
+		return err
+	}
+	return nil
+}
+
+func getReplyCounterCache(ctx context.Context, reply *comment.ReplyBrief, itemId string) error {
+	key := "comment_counter"
+	field1 := fmt.Sprintf("{%s:digg}", itemId)
+	cmd := g.Rdb.HMGet(ctx, key, field1)
+	err := cmd.Err()
+	if err != nil {
+		if err != redis.Nil {
+			g.Rdb.HSet(ctx, key, field1, reply.DiggCount)
+			g.Logger.Error("get user counter cache error", zap.Error(err))
+			return err
+		}
+		return nil
+	}
+	err = cmd.Scan(&reply.DiggCount)
+	if err != nil {
+		g.Logger.Error("get user counter cache error", zap.Error(err))
 		return err
 	}
 	return nil

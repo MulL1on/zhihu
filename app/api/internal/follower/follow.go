@@ -84,7 +84,7 @@ func (a *FollowApi) GetFollowerList(c *gin.Context) {
 	if len(*list) != 0 {
 		for k, v := range *list {
 			var uInfo = &user.InfoPack{}
-			err = service.User().Info().GetUserInfo(&uInfo.Basic, &uInfo.Counter, v)
+			err = service.User().Info().GetUserInfo(c, &uInfo.Basic, &uInfo.Counter, v)
 			if err != nil {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return
@@ -116,7 +116,7 @@ func (a *FollowApi) GetFolloweeList(c *gin.Context) {
 	if len(*list) != 0 {
 		for k, v := range *list {
 			var uInfo = &user.InfoPack{}
-			err = service.User().Info().GetUserInfo(&uInfo.Basic, &uInfo.Counter, v)
+			err = service.User().Info().GetUserInfo(c, &uInfo.Basic, &uInfo.Counter, v)
 			if err != nil {
 				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 				return

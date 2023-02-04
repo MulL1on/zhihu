@@ -21,11 +21,12 @@ func (a *InfoApi) GetUserInfo(c *gin.Context) {
 
 	var userBasic = &user.Basic{}
 	var userCounter = &user.Counter{}
-	err := service.User().Info().GetUserInfo(userBasic, userCounter, id)
+	err := service.User().Info().GetUserInfo(c, userBasic, userCounter, id)
 	if err != nil {
 		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 		return
 	}
+
 	var infoPack = user.InfoPack{
 		Counter: *userCounter,
 		Basic:   *userBasic,

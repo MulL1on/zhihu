@@ -2,7 +2,6 @@ package comment
 
 import (
 	"github.com/gin-gonic/gin"
-
 	"juejin/app/internal/model/comment"
 	"juejin/app/internal/model/user"
 	"juejin/app/internal/service"
@@ -160,7 +159,7 @@ func (a *ReviewApi) GetCommentList(c *gin.Context) {
 			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 			return
 		}
-		err = service.User().Info().GetUserInfo(&userInfo.Basic, &userInfo.Counter, commentInfo.UserId)
+		err = service.User().Info().GetUserInfo(c, &userInfo.Basic, &userInfo.Counter, commentInfo.UserId)
 		data.CommentInfo = *commentInfo
 		data.UserInfo = *userInfo
 		data.ReplyInfo = *replyList
@@ -168,4 +167,5 @@ func (a *ReviewApi) GetCommentList(c *gin.Context) {
 	}
 
 	resp.OkWithData(c, "get comment list successfully", commentList)
+
 }
