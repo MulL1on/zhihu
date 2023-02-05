@@ -7,4 +7,5 @@ type Group struct {
 	CollectionRouter
 	FollowerRouter
 	CommentRouter
+	DiggRouter
 }

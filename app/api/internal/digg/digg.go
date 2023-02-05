@@ -21,7 +21,7 @@ func (a *LikeApi) DoDigg(c *gin.Context) {
 	var doDigg = &digg.Like{}
 	err := c.BindJSON(doDigg)
 	if err != nil {
-		resp.ResponseFail(c, http.StatusInternalServerError, "json patter incorrect")
+		resp.ResponseFail(c, http.StatusBadRequest, "json patter incorrect")
 		return
 	}
 	err = service.Digg().Like().DoDigg(c, userId, doDigg)

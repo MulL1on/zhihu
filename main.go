@@ -1,6 +1,9 @@
 package main
 
-import "juejin/boot"
+import (
+	"context"
+	"juejin/boot"
+)
 
 func main() {
 
@@ -9,5 +12,6 @@ func main() {
 	boot.MysqlDBSetup()
 	boot.RedisSetup()
 	boot.SnowFlakeSetup()
+	boot.ExecuteCron(context.Background())
 	boot.ServerSetup()
 }

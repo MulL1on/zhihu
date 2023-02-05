@@ -1310,8 +1310,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>3</Position>
     </column>
     <column id="358" parent="305" name="user_id">
-      <AutoIncrement>1</AutoIncrement>
-      <DasType>int|0s</DasType>
+      <DasType>bigint|0s</DasType>
       <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
@@ -1326,13 +1325,13 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>3</Position>
     </column>
     <column id="361" parent="305" name="id">
+      <AutoIncrement>1</AutoIncrement>
       <DasType>int|0s</DasType>
       <NotNull>1</NotNull>
       <Position>4</Position>
     </column>
     <index id="362" parent="305" name="PRIMARY">
-      <ColNames>user_id
-id</ColNames>
+      <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>

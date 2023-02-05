@@ -7,4 +7,5 @@ type Config struct {
 	App        *App        `mapstructure:"app" yaml:"app"`
 	Server     *Server     `mapstructure:"server" yaml:"server"`
 	Snowflake  *Snowflake  `mapstructure:"snowflake" yaml:"snowflake"`
+	Cron       *Cron       `mapstructure:"cron" yaml:"cron"`
 }

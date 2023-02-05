@@ -12,5 +12,5 @@ func SnowFlakeSetup() {
 		g.Logger.Fatal(" new node error", zap.Error(err))
 	}
 	g.SfNode = node
-	g.Logger.Info("init snowflake successfully")
+	g.Logger.Info("initialize snowflake successfully")
 }

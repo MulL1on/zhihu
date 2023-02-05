@@ -149,12 +149,12 @@ func (a *ReviewApi) GetCommentList(c *gin.Context) {
 		var data = &comment.List{}
 		var commentInfo = &comment.Comment{}
 		var userInfo = &user.InfoPack{}
-		err = service.Comment().Review().GetCommentInfo(commentInfo, v)
+		err = service.Comment().Review().GetCommentInfo(c, commentInfo, v)
 		if err != nil {
 			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 			return
 		}
-		replyList, err := service.Comment().Reply().GetReplyInfo(commentInfo.CommentId)
+		replyList, err := service.Comment().Reply().GetReplyInfo(c, commentInfo.CommentId)
 		if err != nil {
 			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 			return

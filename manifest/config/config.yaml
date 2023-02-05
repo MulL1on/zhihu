@@ -60,3 +60,7 @@ server:
 
 snowflake:
   machineId: 1
+
+cron:
+  scanCounterSpec: "0 */1 * * * *"
+  scanCheckDiggSpec: "0 */1 * * * *"
