@@ -15,6 +15,7 @@ func (r *FollowerRouter) InitFollowerRouter(router *gin.RouterGroup) gin.IRouter
 		followerRouter.DELETE("/followee", followerApi.Follow().UndoFollow)
 		followerRouter.GET("/followerList", followerApi.Follow().GetFollowerList)
 		followerRouter.GET("/followeeList", followerApi.Follow().GetFolloweeList)
+
 	}
 	return followerRouter
 }

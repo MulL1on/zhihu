@@ -4322,3 +4322,33 @@
 [2023-02-05 23:14:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "512.1µs"}
 [2023-02-05 23:14:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "512.1µs"}
 [2023-02-05 23:14:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.028ms"}
+[2023-02-06 00:39:06.511]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-06 00:39:06.538]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-06 00:39:06.540]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-06 00:39:06.540]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	initialize snowflake successfully
+[2023-02-06 00:39:06.540]	INFO	D:/GoProjects/src/juejin/boot/cron.go:55	initialize cron successfully	{"counter spec": "0 */1 * * * *"}
+[2023-02-06 00:39:06.543]	INFO	D:/GoProjects/src/juejin/app/router/router.go:32	initialize routers successfully
+[2023-02-06 00:39:06.543]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-06 00:40:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-06 00:40:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "1.622ms"}
+[2023-02-06 00:40:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "2.1564ms"}
+[2023-02-06 00:40:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "2.1564ms"}
+[2023-02-06 00:40:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "4.9222ms"}
+[2023-02-06 00:42:14.742]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-06 00:42:14.766]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-06 00:42:14.767]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-06 00:42:14.767]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	initialize snowflake successfully
+[2023-02-06 00:42:14.767]	INFO	D:/GoProjects/src/juejin/boot/cron.go:55	initialize cron successfully	{"counter spec": "0 */1 * * * *"}
+[2023-02-06 00:42:14.770]	INFO	D:/GoProjects/src/juejin/app/router/router.go:32	initialize routers successfully
+[2023-02-06 00:42:14.771]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-06 00:42:19.899]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/upload/user/user-avatar	{"status": 200, "method": "POST", "path": "/api/upload/user/user-avatar", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "209.8843ms"}
+[2023-02-06 00:43:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-06 00:43:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "1.0942ms"}
+[2023-02-06 00:43:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "1.6474ms"}
+[2023-02-06 00:43:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "1.6474ms"}
+[2023-02-06 00:43:00.016]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "3.0489ms"}
+[2023-02-06 00:44:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "131.2µs"}
+[2023-02-06 00:44:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "131.2µs"}
+[2023-02-06 00:44:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-06 00:44:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "0s"}
+[2023-02-06 00:44:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.0494ms"}

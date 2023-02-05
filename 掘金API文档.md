@@ -1630,6 +1630,8 @@ GET /api/author_centor/{type}/list{page_no}{page_size}
 |  4   |   草稿   |
 |  5   |   评论   |
 |  6   |   回复   |
+|  8   |   分类   |
+|  9   |   标签   |
 |  24  |   沸点   |
 | 1001 | 系统消息 |
 

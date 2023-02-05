@@ -64,3 +64,9 @@ snowflake:
 cron:
   scanCounterSpec: "0 */1 * * * *"
   scanCheckDiggSpec: "0 */1 * * * *"
+
+upload:
+  accessKey: "4DwBYJ2agZCGvGC_-0bV4pITS0AyPDhlPlSeYb8D"
+  secretKey: "lpgrtt_TsZIHDKMCJaM4xGfAgW3jio-95jP4Arj4"
+  bucket: "juejin114"
+  Server: ""

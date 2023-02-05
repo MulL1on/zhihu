@@ -29,3 +29,19 @@ func OkWithData(c *gin.Context, message string, data interface{}) {
 		"ok":     true,
 	})
 }
+
+func UploadOk(c *gin.Context, code int, url string) {
+	c.JSON(code, gin.H{
+		"code": code,
+		"url":  url,
+		"ok":   true,
+	})
+}
+
+func UploadFail(c *gin.Context, code int, url string) {
+	c.JSON(code, gin.H{
+		"code": code,
+		"url":  url,
+		"ok":   false,
+	})
+}

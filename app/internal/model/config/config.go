@@ -8,4 +8,5 @@ type Config struct {
 	Server     *Server     `mapstructure:"server" yaml:"server"`
 	Snowflake  *Snowflake  `mapstructure:"snowflake" yaml:"snowflake"`
 	Cron       *Cron       `mapstructure:"cron" yaml:"cron"`
+	Upload     *Upload     `mapstructure:"upload" yaml:"upload"`
 }

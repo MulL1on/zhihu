@@ -8,4 +8,5 @@ type Group struct {
 	FollowerRouter
 	CommentRouter
 	DiggRouter
+	UploadRouter
 }
