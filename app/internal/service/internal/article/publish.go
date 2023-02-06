@@ -22,8 +22,8 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 		g.Logger.Error("begin trans failed", zap.Error(err))
 		return err
 	}
-	sqlStr1 := "insert into article_major (content, brief_content, title, category_id, user_id, create_time) VALUES(?,?,?,?,?,?)"
-	ret1, err := tx.Exec(sqlStr1, draft.Content, draft.BriefContent, draft.Title, draft.CategoryId, draft.UserId, time.Now())
+	sqlStr1 := "insert into article_major (content, brief_content,cover, title, category_id, user_id, create_time) VALUES(?,?,?,?,?,?,?)"
+	ret1, err := tx.Exec(sqlStr1, draft.Content, draft.BriefContent, draft.Cover, draft.Title, draft.CategoryId, draft.UserId, time.Now())
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("publish article sqlStr1 error", zap.Error(err))
@@ -32,7 +32,7 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 
 	id, _ := ret1.LastInsertId()
 	articleId := strconv.FormatInt(id, 10)
-	sqlStr2 := "update tag set context_id=? where context_id=? "
+	sqlStr2 := "update item_tag set item_id=? ,item_type=2 where item_id=? &&item_tag.item_type=4"
 	ret2, err := tx.Exec(sqlStr2, articleId, draft.DraftId)
 	if err != nil {
 		tx.Rollback()
@@ -44,6 +44,7 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("publish article ret2.RowsAffected error", zap.Error(err))
+		return err
 	}
 
 	sqlStr3 := "delete from draft where draft_id=?"
@@ -58,6 +59,7 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("publish article ret3.RowsAffected error", zap.Error(err))
+		return err
 	}
 
 	sqlStr4 := "insert into article_counter (article_id) values (?)"
@@ -70,7 +72,8 @@ func (s *SPublish) Publish(draft *draft.Draft) error {
 
 	if !(affRows2 > 0 && affRows3 == 1) {
 		tx.Rollback()
-		return fmt.Errorf("internal eror")
+		g.Logger.Error("affRow incorrect ", zap.Int64("affRows2", affRows2), zap.Int64("affRow3", affRows3))
+		return fmt.Errorf("internal error")
 	}
 	tx.Commit()
 	return nil

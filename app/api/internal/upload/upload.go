@@ -27,3 +27,14 @@ func getUuid() string {
 	u := uuid.New()
 	return u.String()
 }
+
+func (a *UploadApi) ArticleCoverUpload(c *gin.Context) {
+	f, _ := c.FormFile("cover")
+	path := "article/cover/" + getUuid() + ".png"
+	code, url := upload.ToQiniu(f, path)
+	if code != 0 {
+		resp.UploadFail(c, code, url)
+		return
+	}
+	resp.UploadOk(c, http.StatusOK, url)
+}

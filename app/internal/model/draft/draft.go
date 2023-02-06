@@ -5,6 +5,7 @@ import "time"
 type Draft struct {
 	Content      string    `json:"content"`
 	BriefContent string    `json:"brief_content"`
+	Cover        string    `json:"cover"`
 	Title        string    `json:"title"`
 	CategoryId   string    `json:"category_id"`
 	DraftId      string    `json:"draft_id"`

@@ -9,4 +9,5 @@ type Group struct {
 	CommentRouter
 	DiggRouter
 	UploadRouter
+	TagRouter
 }

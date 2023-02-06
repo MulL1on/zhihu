@@ -14,13 +14,14 @@ func InitRouter() *gin.Engine {
 	publicGroup := r.Group("/api")
 	{
 		routerGroup.InitArticleRouter(publicGroup)
-
+		routerGroup.InitTagRouter(publicGroup)
 		routerGroup.InitUserRouter(publicGroup)
 	}
 
 	privateGroup := r.Group("/api")
 	privateGroup.Use(middleware.JWTAuthMiddleware())
 	{
+		routerGroup.InitPrivateArticleRouter(privateGroup)
 		routerGroup.InitDraftRouter(privateGroup)
 		routerGroup.InitPrivateUserRouter(privateGroup)
 		routerGroup.InitCollectionPrivateRouter(privateGroup)

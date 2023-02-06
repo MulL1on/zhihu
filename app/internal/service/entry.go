@@ -2,6 +2,7 @@ package service
 
 import (
 	"juejin/app/internal/service/internal/article"
+	"juejin/app/internal/service/internal/category"
 	"juejin/app/internal/service/internal/collection"
 	"juejin/app/internal/service/internal/comment"
 	"juejin/app/internal/service/internal/digg"
@@ -22,6 +23,7 @@ var (
 	insComment    = comment.Group{}
 	insView       = view.Group{}
 	insDigg       = digg.Group{}
+	insCategory   = category.Group{}
 )
 
 func User() *user.Group {
@@ -58,4 +60,8 @@ func View() *view.Group {
 
 func Digg() *digg.Group {
 	return &insDigg
+}
+
+func Category() *category.Group {
+	return &insCategory
 }

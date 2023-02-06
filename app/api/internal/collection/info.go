@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"juejin/app/internal/model/article"
 	"juejin/app/internal/model/collection"
-	"juejin/app/internal/model/user"
 	"juejin/app/internal/service"
 	"juejin/utils/common/resp"
 	"net/http"
@@ -46,29 +45,40 @@ func (a *InfoApi) GetCollectedArticle(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 		return
 	}
-	var articleBriefList = make([]*article.Brief, len(*idList))
-
-	//获取收藏的文章
-	if len(*idList) != 0 {
-		for k, v := range *idList {
-			var articleSubject = &article.Article{}
-			var uInfo = &user.InfoPack{}
-			var articleBrief = &article.Brief{}
-			err = service.Article().Info().GetArticleMajor(v, articleSubject)
-			if err != nil {
-				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
-				return
-			}
-			err = service.User().Info().GetUserInfo(c, &uInfo.Basic, &uInfo.Counter, articleSubject.UserId)
-			if err != nil {
-				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
-				return
-			}
-			articleBrief.ArticleInfo = articleSubject
-			articleBrief.ArticleId = articleSubject.ArticleId
-			articleBrief.AuthorInfo = uInfo
-			articleBriefList[k] = articleBrief
+	var articles = make([]article.List, 0)
+	for _, v := range *idList {
+		var targetArticle = &article.List{}
+		err = service.Article().Info().GetArticle(v, targetArticle)
+		if err != nil {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+			return
 		}
+
+		//获取分类信息
+		err = service.Category().Info().GetCategoryInfo(targetArticle.ArticleInfo.CategoryId, &targetArticle.Category)
+		if err != nil {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		}
+
+		//获取标签信息
+		tagList, err := service.Tag().Edit().GetTagListByItem(targetArticle.ArticleInfo.ArticleId, 2)
+		if err != nil {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+			return
+		}
+		targetArticle.Tags = *tagList
+
+		//检查是否点赞
+		if userId != "" {
+			targetArticle.ArticleInfo.IsDigg, err = service.Digg().Like().CheckIsDigg(c, userId, targetArticle.ArticleInfo.ArticleId, 2)
+			if err != nil {
+				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+				return
+			}
+		}
+		targetArticle.ArticleInfo.IsDigg = false
+
+		articles = append(articles, *targetArticle)
 	}
 
 	//获取收藏夹信息
@@ -79,12 +89,12 @@ func (a *InfoApi) GetCollectedArticle(c *gin.Context) {
 	}
 
 	type data struct {
-		Articles       []*article.Brief `json:"articles"`
-		CollectionInfo *collection.Set  `json:"collection_info"`
+		Articles       []article.List  `json:"articles"`
+		CollectionInfo *collection.Set `json:"collection_info"`
 	}
 
 	var d = &data{
-		Articles:       articleBriefList,
+		Articles:       articles,
 		CollectionInfo: cs,
 	}
 

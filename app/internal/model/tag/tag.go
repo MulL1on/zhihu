@@ -1,8 +1,7 @@
 package tag
 
-type tag struct {
-	TagId     string
-	ContextId string
-	IdType    string
-	Id        string
+type Tag struct {
+	TagId      string `json:"tag_id"`
+	TagName    string `json:"tag_name"`
+	CreateTime string `json:"create_time"`
 }

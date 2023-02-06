@@ -11,6 +11,7 @@ func (r *UploadRouter) InitUploadRouter(router *gin.RouterGroup) gin.IRouter {
 	uploadRouter := router.Group("/upload")
 	uploadApi := api.Upload()
 	{
+		uploadRouter.POST("/article/cover", uploadApi.Upload().ArticleCoverUpload)
 		uploadRouter.POST("/user/user-avatar", uploadApi.Upload().UserAvatarUpload)
 	}
 	return uploadRouter

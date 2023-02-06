@@ -7,6 +7,7 @@ import (
 	"juejin/app/api/internal/digg"
 	"juejin/app/api/internal/draft"
 	"juejin/app/api/internal/follower"
+	"juejin/app/api/internal/tag"
 	"juejin/app/api/internal/upload"
 	"juejin/app/api/internal/user"
 )
@@ -20,6 +21,7 @@ var (
 	insComment    = comment.Group{}
 	insDigg       = digg.Group{}
 	insUpload     = upload.Group{}
+	insTag        = tag.Group{}
 )
 
 func User() *user.Group {
@@ -50,4 +52,8 @@ func Digg() *digg.Group {
 
 func Upload() *upload.Group {
 	return &insUpload
+}
+
+func Tag() *tag.Group {
+	return &insTag
 }
