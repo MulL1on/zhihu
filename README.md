@@ -60,7 +60,7 @@
 key blacklist:$token val ""
 ```
 
-![cache1](.\cache\cache1.png)
+![cache1](https://github.com/GDshenqingNo1/juejin.git/cache/cache1.png)
 
 ### 点赞状态
 
