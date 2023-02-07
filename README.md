@@ -1,4 +1,5 @@
 # Gin+html+css仿稀土掘金
+## 后端访问: http://api.liangweij.xyz:8080
 
 ## 第三方包
 
