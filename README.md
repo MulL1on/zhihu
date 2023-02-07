@@ -126,5 +126,5 @@ key reply_counter field {$comment_id:digg_count} value {$count}
 
 ​                                     /                                                            \
 
-​                            各位学长                                                            我
+​                            各位学长                                                                    我
 
