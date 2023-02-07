@@ -11,6 +11,7 @@ func (r *UserRouter) InitUserRouter(router *gin.RouterGroup) gin.IRouter {
 	userRouter := router.Group("/user")
 	userApi := api.User()
 	{
+		userRouter.GET("/othersInfo", userApi.Info().GetOthersInfo)
 		userRouter.POST("/login", userApi.Auth().Login)
 		userRouter.POST("/register", userApi.Auth().Register)
 		userRouter.POST("/code", userApi.Auth().SendCode)
@@ -22,6 +23,7 @@ func (r *UserRouter) InitPrivateUserRouter(router *gin.RouterGroup) gin.IRouter 
 	userRouter := router.Group("/user")
 	userApi := api.User()
 	{
+		userRouter.GET("/othersInfoByUser", userApi.Info().GetOthersInfo)
 		userRouter.PUT("/info", userApi.Info().UpdateUserInfo)
 		userRouter.GET("/info", userApi.Info().GetUserInfo)
 		userRouter.GET("/logout", userApi.Auth().Logout)

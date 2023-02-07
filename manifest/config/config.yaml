@@ -42,6 +42,11 @@ middleware:
     expiresTime: 604800
     bufferTime: 86400
     issuer: 'MyJuejin.com'
+  rateLimit:
+    capacity: 300
+    fillInterval: 10ms
+    quantum: 3
+
 
 app:
   cookie:

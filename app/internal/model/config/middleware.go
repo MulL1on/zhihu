@@ -1,8 +1,11 @@
 package config
 
+import "time"
+
 type Middleware struct {
-	Cors *CORS `mapstructure:"cors" yaml:"cors"`
-	Jwt  *Jwt  `mapstructure:"jwt" yaml:"jwt"`
+	Cors      *CORS      `mapstructure:"cors" yaml:"cors"`
+	Jwt       *Jwt       `mapstructure:"jwt" yaml:"jwt"`
+	RateLimit *RateLimit `mapstructure:"rateLimit" yaml:"rateLimit"`
 }
 
 type CORSWhitelist struct {
@@ -24,4 +27,15 @@ type Jwt struct {
 type CORS struct {
 	Mode      string          `mapstructure:"mode" yaml:"mode"`
 	Whitelist []CORSWhitelist `mapstructure:"whitelist" yaml:"whitelist"`
+}
+
+type RateLimit struct {
+	Capacity     int64  `mapstructure:"capacity" yaml:"capacity"`
+	Quantum      int64  `mapstructure:"quantum" yaml:"quantum"`
+	FillInterval string `mapstructure:"fillInterval" yaml:"fillInterval"`
+}
+
+func (r *RateLimit) GetFillInterval(fillInterval string) time.Duration {
+	t, _ := time.ParseDuration(fillInterval)
+	return t
 }

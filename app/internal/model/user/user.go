@@ -25,6 +25,7 @@ type Basic struct {
 	Company     string `json:"company" form:"company" db:"company"`
 	Description string `json:"description" form:"description" db:"description"`
 	JobTitle    string `json:"job_title" form:"job_title" db:"job_title"`
+	IsFollow    bool   `json:"is_follow"`
 }
 
 type Counter struct {

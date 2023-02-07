@@ -10,4 +10,5 @@ type Group struct {
 	DiggRouter
 	UploadRouter
 	TagRouter
+	RankRouter
 }

@@ -6,6 +6,7 @@ import (
 	"juejin/app/internal/service"
 	"juejin/utils/common/resp"
 	"net/http"
+	"strconv"
 )
 
 type InfoApi struct{}
@@ -26,7 +27,7 @@ func (a *InfoApi) GetUserInfo(c *gin.Context) {
 		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
 		return
 	}
-
+	userBasic.IsFollow = false
 	var infoPack = user.InfoPack{
 		Counter: *userCounter,
 		Basic:   *userBasic,
@@ -52,4 +53,36 @@ func (a *InfoApi) UpdateUserInfo(c *gin.Context) {
 		return
 	}
 	resp.ResponseSuccess(c, http.StatusOK, "update user info successfully")
+}
+
+func (a *InfoApi) GetOthersInfo(c *gin.Context) {
+	userId, _ := c.Get("id")
+	othersId, _ := strconv.ParseInt(c.Query("user_id"), 10, 64)
+	var userBasic = &user.Basic{}
+	var userCounter = &user.Counter{}
+
+	err := service.User().Info().GetUserInfo(c, userBasic, userCounter, othersId)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
+	if userId != nil {
+		err = service.Follower().Follow().CheckIsFollowed(othersId, userId)
+		if err != nil {
+			if err.Error() != "user is already followed" {
+				resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+				return
+			}
+			userBasic.IsFollow = true
+		}
+		userBasic.IsFollow = false
+	} else {
+		userBasic.IsFollow = false
+	}
+
+	var infoPack = user.InfoPack{
+		Counter: *userCounter,
+		Basic:   *userBasic,
+	}
+	resp.OkWithData(c, "get user info successfully", infoPack)
 }

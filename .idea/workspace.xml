@@ -5,32 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="836dc47c-4f2c-4689-a609-712f67699779" name="变更" comment="new boot file">
-      <change afterPath="$PROJECT_DIR$/app/api/internal/tag/entry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/api/internal/tag/tag.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/internal/model/category/category.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/category/entry.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/category/info.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/router/tag.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/532ed3fd-5577-441a-b7ff-22a9cbed5ab0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/532ed3fd-5577-441a-b7ff-22a9cbed5ab0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/internal/rank/entry.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/api/internal/rank/rank.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/internal/middleware/rateLimit.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/rank/entry.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/internal/service/internal/rank/rank.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/router/rank.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/api/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/entry.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/internal/article/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/internal/article/info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/internal/collection/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/internal/collection/info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/api/internal/upload/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/internal/upload/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/api/internal/user/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/api/internal/user/info.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/internal/model/article/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/article/article.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/model/draft/draft.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/draft/draft.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/model/tag/tag.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/tag/tag.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/model/config/middleware.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/config/middleware.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/model/user/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/model/user/user.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/internal/service/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/entry.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/internal/service/internal/article/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/article/info.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/article/publish.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/article/publish.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/draft/audit.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/draft/audit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/tag/edit.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/tag/edit.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/view/view.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/view/view.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/article.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/article.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/internal/service/internal/user/info.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/internal/service/internal/user/info.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/entry.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/entry.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/router/router.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/router.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/router/upload.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/upload.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/router/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/app/router/user.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/log" beforeDir="false" afterPath="$PROJECT_DIR$/log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest/config/config.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/manifest/config/config.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

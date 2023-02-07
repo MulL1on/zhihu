@@ -15,7 +15,6 @@ type Article struct {
 	CategoryId   string    `json:"category_id"`
 	ArticleId    string    `json:"article_id"`
 	UserId       string    `json:"user_id"`
-	TagsIds      []string  `json:"tags_ids"`
 	PublishTime  time.Time `json:"publish_time"`
 	CollectCount int       `json:"collect_count"`
 	CommentCount int       `json:"comment_count"`

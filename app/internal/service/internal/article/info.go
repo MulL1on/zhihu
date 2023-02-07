@@ -106,9 +106,11 @@ func (s *SInfo) GetArticleListByDigg(limit, pageNo int, categoryId, tagId string
 	if tagId != "" {
 		sqlStr = "select article_id from article_counter where article_id in (select a.article_id from article_major as a where category_id=? in (select item_id from item_tag where tag_id=?&&item_tag.item_type=2)) order by digg_count desc limit ?,?"
 		rows, err = g.MysqlDB.Query(sqlStr, categoryId, tagId, (pageNo-1)*limit, limit)
+	} else {
+		sqlStr = "select article_id from article_counter where article_id in (select a.article_id from article_major as a where category_id=? ) order by digg_count desc limit ?,?"
+		rows, err = g.MysqlDB.Query(sqlStr, categoryId, (pageNo-1)*limit, limit)
 	}
-	sqlStr = "select article_id from article_counter where article_id in (select a.article_id from article_major as a where category_id=? ) order by digg_count desc limit ?,?"
-	rows, err = g.MysqlDB.Query(sqlStr, categoryId, (pageNo-1)*limit, limit)
+
 	if err != nil {
 		if err == sql.ErrNoRows {
 			return &articleList, nil
@@ -187,8 +189,8 @@ func getUserInfo(ctx context.Context, userBasic *user.Basic, userCounter *user.C
 		return err
 	}
 
-	sqlStr = "select description,avatar,company,job_title from user_basic where user_id=?"
-	err = g.MysqlDB.QueryRow(sqlStr, id).Scan(&userBasic.Description, &userBasic.Avatar, &userBasic.Company, &userBasic.JobTitle)
+	sqlStr = "select username,description,avatar,company,job_title from user_basic where user_id=?"
+	err = g.MysqlDB.QueryRow(sqlStr, id).Scan(&userBasic.Username, &userBasic.Description, &userBasic.Avatar, &userBasic.Company, &userBasic.JobTitle)
 	if err != nil {
 		g.Logger.Error("get user basic error", zap.Error(err))
 		return err
