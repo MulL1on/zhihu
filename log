@@ -5853,3 +5853,169 @@
 [2023-02-07 18:24:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "517.2µs"}
 [2023-02-07 18:24:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "1.0643ms"}
 [2023-02-07 18:24:00.018]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "3.4811ms"}
+[2023-02-07 20:16:18.458]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-07 20:16:18.485]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-07 20:16:18.487]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-07 20:16:18.487]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	initialize snowflake successfully
+[2023-02-07 20:16:18.487]	INFO	D:/GoProjects/src/juejin/boot/cron.go:55	initialize cron successfully	{"counter spec": "0 */1 * * * *"}
+[2023-02-07 20:16:18.487]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/rateLimit.go:17	new bucket successfully	{"capacity": 300, "rate": 300}
+[2023-02-07 20:16:18.491]	INFO	D:/GoProjects/src/juejin/app/router/router.go:34	initialize routers successfully
+[2023-02-07 20:16:18.491]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-07 20:16:59.083]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/login	{"status": 200, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "50.6893ms"}
+[2023-02-07 20:17:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:17:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "2.0067ms"}
+[2023-02-07 20:17:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "2.0067ms"}
+[2023-02-07 20:17:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "2.0067ms"}
+[2023-02-07 20:17:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "2.0067ms"}
+[2023-02-07 20:18:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:18:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:18:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:18:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:18:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.0006ms"}
+[2023-02-07 20:19:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:19:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.0026ms"}
+[2023-02-07 20:19:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:19:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:19:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:20:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:20:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:20:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:20:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:20:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "0s"}
+[2023-02-07 20:20:55.582]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/logout	{"status": 200, "method": "GET", "path": "/api/user/logout", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "0s"}
+[2023-02-07 20:21:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "119.4µs"}
+[2023-02-07 20:21:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "507.7µs"}
+[2023-02-07 20:21:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "507.7µs"}
+[2023-02-07 20:21:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "507.7µs"}
+[2023-02-07 20:21:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "627.1µs"}
+[2023-02-07 20:22:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:22:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "508.4µs"}
+[2023-02-07 20:22:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "508.4µs"}
+[2023-02-07 20:22:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "508.4µs"}
+[2023-02-07 20:22:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "508.4µs"}
+[2023-02-07 20:23:00.005]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:23:00.005]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "508.3µs"}
+[2023-02-07 20:23:00.005]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "508.3µs"}
+[2023-02-07 20:23:00.005]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "508.3µs"}
+[2023-02-07 20:23:00.005]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "508.3µs"}
+[2023-02-07 20:23:25.315]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/user/info	{"status": 200, "method": "GET", "path": "/api/user/info", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.3544ms"}
+[2023-02-07 20:24:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "552.7µs"}
+[2023-02-07 20:24:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "552.7µs"}
+[2023-02-07 20:24:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "552.7µs"}
+[2023-02-07 20:24:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "552.7µs"}
+[2023-02-07 20:24:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "3.9963ms"}
+[2023-02-07 20:25:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "512.5µs"}
+[2023-02-07 20:25:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "680.2µs"}
+[2023-02-07 20:25:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "680.2µs"}
+[2023-02-07 20:25:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "680.2µs"}
+[2023-02-07 20:25:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "680.2µs"}
+[2023-02-07 20:26:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "755.1µs"}
+[2023-02-07 20:26:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "245.5µs"}
+[2023-02-07 20:26:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "822.8µs"}
+[2023-02-07 20:26:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "577.3µs"}
+[2023-02-07 20:26:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "577.3µs"}
+[2023-02-07 20:27:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:27:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "505.4µs"}
+[2023-02-07 20:27:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "505.4µs"}
+[2023-02-07 20:27:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "505.4µs"}
+[2023-02-07 20:27:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "505.4µs"}
+[2023-02-07 20:28:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:28:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "510.3µs"}
+[2023-02-07 20:28:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "510.3µs"}
+[2023-02-07 20:28:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "510.3µs"}
+[2023-02-07 20:28:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "510.3µs"}
+[2023-02-07 20:29:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:29:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "558.1µs"}
+[2023-02-07 20:29:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "558.1µs"}
+[2023-02-07 20:29:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "558.1µs"}
+[2023-02-07 20:29:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "558.1µs"}
+[2023-02-07 20:29:17.014]	INFO	D:/GoProjects/src/juejin/app/internal/service/internal/digg/digg.go:54	get data from mysql	{"data": 2}
+[2023-02-07 20:29:17.016]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 200, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "5.2216ms"}
+[2023-02-07 20:30:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:30:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "511.3µs"}
+[2023-02-07 20:30:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "3.5273ms"}
+[2023-02-07 20:30:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "4.0335ms"}
+[2023-02-07 20:30:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "4.7156ms"}
+[2023-02-07 20:31:00.001]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:31:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "507.8µs"}
+[2023-02-07 20:31:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "507.8µs"}
+[2023-02-07 20:31:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "507.8µs"}
+[2023-02-07 20:31:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.8474ms"}
+[2023-02-07 20:31:10.716]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:61	post comment affRow incorrect affRow2 :0
+[2023-02-07 20:31:10.717]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 500, "method": "POST", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.5523ms"}
+[2023-02-07 20:32:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:32:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "512.5µs"}
+[2023-02-07 20:32:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "512.5µs"}
+[2023-02-07 20:32:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "512.5µs"}
+[2023-02-07 20:32:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.1237ms"}
+[2023-02-07 20:33:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "512.4µs"}
+[2023-02-07 20:33:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "512.4µs"}
+[2023-02-07 20:33:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "512.4µs"}
+[2023-02-07 20:33:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "512.4µs"}
+[2023-02-07 20:33:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.1338ms"}
+[2023-02-07 20:33:01.839]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/comment/comment.go:61	post comment affRow incorrect affRow2 :0
+[2023-02-07 20:33:01.839]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 500, "method": "POST", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.807ms"}
+[2023-02-07 20:34:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "264.1µs"}
+[2023-02-07 20:34:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "778.3µs"}
+[2023-02-07 20:34:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "778.3µs"}
+[2023-02-07 20:34:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "778.3µs"}
+[2023-02-07 20:34:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.5296ms"}
+[2023-02-07 20:34:16.369]	INFO	D:/GoProjects/src/juejin/boot/logger.go:55	initialize logger successfully
+[2023-02-07 20:34:16.393]	INFO	D:/GoProjects/src/juejin/boot/database.go:30	initialize mysql successfully
+[2023-02-07 20:34:16.394]	INFO	D:/GoProjects/src/juejin/boot/database.go:49	initialize redis successfully.
+[2023-02-07 20:34:16.394]	INFO	D:/GoProjects/src/juejin/boot/snowflake.go:15	initialize snowflake successfully
+[2023-02-07 20:34:16.394]	INFO	D:/GoProjects/src/juejin/boot/cron.go:55	initialize cron successfully	{"counter spec": "0 */1 * * * *"}
+[2023-02-07 20:34:16.395]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/rateLimit.go:17	new bucket successfully	{"capacity": 300, "rate": 300}
+[2023-02-07 20:34:16.398]	INFO	D:/GoProjects/src/juejin/app/router/router.go:34	initialize routers successfully
+[2023-02-07 20:34:16.398]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-02-07 20:34:26.100]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/	{"status": 200, "method": "POST", "path": "/api/comment/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.9957ms"}
+[2023-02-07 20:35:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:35:00.016]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "1.856ms"}
+[2023-02-07 20:35:00.016]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "2.3716ms"}
+[2023-02-07 20:35:00.016]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "2.3716ms"}
+[2023-02-07 20:35:00.018]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "3.9958ms"}
+[2023-02-07 20:36:00.001]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:36:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "512.9µs"}
+[2023-02-07 20:36:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "512.9µs"}
+[2023-02-07 20:36:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "512.9µs"}
+[2023-02-07 20:36:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.616ms"}
+[2023-02-07 20:36:45.142]	ERROR	D:/GoProjects/src/juejin/app/internal/service/internal/digg/digg.go:51	do digg error	{"error": "sql: no rows in result set"}
+[2023-02-07 20:36:45.142]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 500, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.0683ms"}
+[2023-02-07 20:37:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:37:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "513µs"}
+[2023-02-07 20:37:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "513µs"}
+[2023-02-07 20:37:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "513µs"}
+[2023-02-07 20:37:00.011]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.9506ms"}
+[2023-02-07 20:38:00.002]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:38:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "555.6µs"}
+[2023-02-07 20:38:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "555.6µs"}
+[2023-02-07 20:38:00.003]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "555.6µs"}
+[2023-02-07 20:38:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.8597ms"}
+[2023-02-07 20:38:25.037]	INFO	D:/GoProjects/src/juejin/app/internal/service/internal/digg/digg.go:54	get data from mysql	{"data": 0}
+[2023-02-07 20:38:25.038]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 200, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.0716ms"}
+[2023-02-07 20:39:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:39:00.007]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "553.9µs"}
+[2023-02-07 20:39:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "3.0954ms"}
+[2023-02-07 20:39:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "5.2125ms"}
+[2023-02-07 20:39:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "5.7888ms"}
+[2023-02-07 20:39:09.020]	INFO	D:/GoProjects/src/juejin/app/internal/service/internal/digg/digg.go:54	get data from mysql	{"data": 1}
+[2023-02-07 20:39:09.021]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 200, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.9837ms"}
+[2023-02-07 20:40:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:40:00.004]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:40:00.006]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.3564ms"}
+[2023-02-07 20:40:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "3.2615ms"}
+[2023-02-07 20:40:00.009]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "4.0642ms"}
+[2023-02-07 20:40:22.904]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/comment/reply	{"status": 200, "method": "POST", "path": "/api/comment/reply", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "3.0937ms"}
+[2023-02-07 20:41:00.014]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "0s"}
+[2023-02-07 20:41:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "516.5µs"}
+[2023-02-07 20:41:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "516.5µs"}
+[2023-02-07 20:41:00.015]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "516.5µs"}
+[2023-02-07 20:41:00.016]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.7939ms"}
+[2023-02-07 20:41:09.846]	INFO	D:/GoProjects/src/juejin/app/internal/service/internal/digg/digg.go:54	get data from mysql	{"data": 0}
+[2023-02-07 20:41:09.848]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 200, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.4638ms"}
+[2023-02-07 20:41:55.311]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/logger.go:22	/api/digg/	{"status": 200, "method": "DELETE", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "2.0132ms"}
+[2023-02-07 20:42:00.008]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "507.9µs"}
+[2023-02-07 20:42:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "2.8087ms"}
+[2023-02-07 20:42:00.010]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "3.3301ms"}
+[2023-02-07 20:42:00.012]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "5.4175ms"}
+[2023-02-07 20:42:00.013]	INFO	D:/GoProjects/src/juejin/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "6.0589ms"}

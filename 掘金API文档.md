@@ -1,3 +1,9 @@
+
+
+# 最后做好的api
+
+[接口文档在线分享 - Apifox](https://www.apifox.cn/apidoc/shared-38edc705-18e8-43b6-a513-dee432d4e560/api-59089075)
+
 # 验证
 
 ## 注册
@@ -8,10 +14,6 @@
 POST /api/user/register
 application/json
 ```
-
-### header
-
-无
 
 ### 请求参数
 
@@ -54,10 +56,6 @@ application/json
 POST /api/user/token
 application/json
 ```
-
-### header
-
-无
 
 ### 请求参数
 
@@ -163,11 +161,11 @@ application/x-www-form-urlencoded
 GET /api/user/logout
 ```
 
-### header
+### cookie
 
-| 字段名        | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -201,11 +199,11 @@ POST /api/content/article_draft/create
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -243,11 +241,11 @@ application/json
 DELETE /api/content/draft
 ```
 
-### header
+### cookie
 
-| 字段名        | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -274,11 +272,11 @@ POST /api/content/article_draft/update
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -324,11 +322,11 @@ application/json
 GET /api/content/article_draft/detail
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -387,11 +385,11 @@ POST /api/content/article/publish
 application/json
 ```
 
-### **header**
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -442,11 +440,11 @@ POST /api/collectionset
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -491,11 +489,11 @@ POST /api/collection
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -525,11 +523,11 @@ application/json
 GET /api/collection/detail
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -594,11 +592,11 @@ GET /api/collection/detail
 GET /api/user/info
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -661,11 +659,11 @@ POST /api/user/update
 mutipart/form-data
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -703,10 +701,6 @@ mutipart/form-data
 POST /api/course/booklet/list_by_category
 aplication/json
 ```
-
-### header
-
-无
 
 ### 请求参数
 
@@ -773,10 +767,6 @@ aplication/json
 ```http
 GET /api/course/booklet_id/detail{booklet_id}
 ```
-
-### header
-
-无
 
 ### 请求参数
 
@@ -847,10 +837,6 @@ GET /api/course/booklet_id/detail{booklet_id}
 GET /api/course/bytecourse//list_by_category{category_id}{page_size}
 ```
 
-### header
-
-无
-
 ### 请求参数
 
 | 名称      | 位置  | 必选 | 类型   | 说明     |
@@ -896,10 +882,6 @@ GET /api/course/bytecourse//list_by_category{category_id}{page_size}
 ```http
 GET /api/course/bytecourse/detail{course_id}
 ```
-
-### header
-
-无
 
 ### 请求参数
 
@@ -959,11 +941,11 @@ GET /api/course/bytecourse/detail{course_id}
 GET /api/message
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1041,11 +1023,11 @@ POST /api/comment
 aplication/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1095,11 +1077,11 @@ DELETE /api/comment
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1129,11 +1111,11 @@ POST  /api/reply
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1199,11 +1181,11 @@ DELETE /api/reply
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1240,11 +1222,11 @@ POST /api/digg
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1276,11 +1258,11 @@ application/json
 DELETE /api/digg
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1315,11 +1297,11 @@ POST /api/chat/message
 applcation/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1363,11 +1345,11 @@ applcation/json
 GET /api/chat
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1388,11 +1370,11 @@ POST /api/follow
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1424,11 +1406,11 @@ DELETE /api/follow
 application/json
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1461,11 +1443,11 @@ application/json
 GET /api/author_center/count
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 
@@ -1513,11 +1495,11 @@ GET /api/author_center/count
 GET /api/author_centor/{type}/list{page_no}{page_size}
 ```
 
-### header
+### cookie
 
-| 名称          | 必选 | 数值          | 说明              |
-| ------------- | ---- | ------------- | ----------------- |
-| Authorization | 是   | Bearer $token | 用户身份验证token |
+| 名称    | 必选 | 数值   | 说明              |
+| ------- | ---- | ------ | ----------------- |
+| x-token | 是   | string | 用户身份验证token |
 
 ### 请求参数
 

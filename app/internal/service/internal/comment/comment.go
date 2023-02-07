@@ -44,7 +44,7 @@ func (s *SReview) PostComment(userId any, c *comment.Comment) error {
 		return err
 	}
 	sqlStr2 := "update article_counter set comment_count=comment_count+1 where article_id=?"
-	ret2, err := tx.Exec(sqlStr2, c.ItemType)
+	ret2, err := tx.Exec(sqlStr2, c.ItemId)
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("post comment sqlStr2 error", zap.Error(err))
