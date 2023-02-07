@@ -118,9 +118,4 @@ key reply_counter field {$comment_id:digg_count} value {$count}
 
 
 
-## **结尾**
-
-​                                              🤣           👉         (●'◡'●)
-
-​                            各位学长                                                                    我
 
