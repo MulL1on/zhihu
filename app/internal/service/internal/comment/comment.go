@@ -4,7 +4,6 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/go-redis/redis/v9"
 	"go.uber.org/zap"
 	g "juejin/app/global"
 	"juejin/app/internal/model/comment"
@@ -248,7 +247,7 @@ func (s *SReply) GetReplyInfo(ctx context.Context, commentId string) (*[]comment
 		}
 
 		//获取缓存中的点赞数
-		err = getReplyCounterCache(ctx, &r.ReplyInfo, r.ReplyInfo.ReplyId)
+		err = getReplyCounterCache(ctx, &r.ReplyInfo)
 		if err != nil {
 			g.Logger.Error("get  reply counter cache error ", zap.Error(err))
 			return nil, err
@@ -272,7 +271,7 @@ func (s *SReply) GetReplyInfo(ctx context.Context, commentId string) (*[]comment
 			if err != nil {
 				return nil, err
 			}
-			err = getReplyCounterCache(ctx, &r.ReplyInfo, r.ReplyInfo.ReplyId)
+			err = getReplyCounterCache(ctx, &r.ReplyInfo)
 			if err != nil {
 				g.Logger.Error("get  parent reply counter cache error ", zap.Error(err))
 				return nil, err
@@ -368,42 +367,47 @@ func GetUserInfo(userBasic *user.Basic, userCounter *user.Counter, id any) error
 
 func getCommentCounterCache(ctx context.Context, comment *comment.Comment, id any) error {
 	key := "comment_counter"
-	field1 := fmt.Sprintf("{%d:digg}", id)
-	cmd := g.Rdb.HMGet(ctx, key, field1)
-	err := cmd.Err()
+	field1 := fmt.Sprintf("{%s:digg_count}", id)
+	ok, err := g.Rdb.HExists(ctx, key, field1).Result()
 	if err != nil {
-		if err != redis.Nil {
-			g.Rdb.HSet(ctx, key, field1, comment.DiggCount)
-			g.Logger.Error("get user counter cache error", zap.Error(err))
-			return err
-		}
-		return nil
-	}
-	err = cmd.Scan(&comment.DiggCount)
-	if err != nil {
-		g.Logger.Error("get user counter cache error", zap.Error(err))
+		g.Logger.Error("'check exist error", zap.Error(err))
 		return err
 	}
+	if !ok {
+		g.Rdb.HSet(ctx, key, field1, comment.DiggCount)
+	}
+	res, err := g.Rdb.HMGet(ctx, key, field1).Result()
+	if err != nil {
+		g.Logger.Error("get comment counter cache error", zap.Error(err))
+		return err
+	}
+
+	for _, v := range res {
+		comment.DiggCount, _ = strconv.Atoi(v.(string))
+	}
+
 	return nil
 }
 
-func getReplyCounterCache(ctx context.Context, reply *comment.ReplyBrief, itemId string) error {
-	key := "comment_counter"
-	field1 := fmt.Sprintf("{%s:digg}", itemId)
-	cmd := g.Rdb.HMGet(ctx, key, field1)
-	err := cmd.Err()
+func getReplyCounterCache(ctx context.Context, reply *comment.ReplyBrief) error {
+	key := "reply_counter"
+	field1 := fmt.Sprintf("{%s:digg_count}", reply.ReplyId)
+	ok, err := g.Rdb.HExists(ctx, key, field1).Result()
 	if err != nil {
-		if err != redis.Nil {
-			g.Rdb.HSet(ctx, key, field1, reply.DiggCount)
-			g.Logger.Error("get user counter cache error", zap.Error(err))
-			return err
-		}
-		return nil
-	}
-	err = cmd.Scan(&reply.DiggCount)
-	if err != nil {
-		g.Logger.Error("get user counter cache error", zap.Error(err))
+		g.Logger.Error("'check exist error", zap.Error(err))
 		return err
+	}
+	if !ok {
+		g.Rdb.HSet(ctx, key, field1, reply.DiggCount)
+	}
+	res, err := g.Rdb.HMGet(ctx, key, field1).Result()
+	if err != nil {
+		g.Logger.Error("get reply counter cache error", zap.Error(err))
+		return err
+	}
+
+	for _, v := range res {
+		reply.DiggCount, _ = strconv.Atoi(v.(string))
 	}
 	return nil
 }

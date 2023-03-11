@@ -8,6 +8,7 @@ import (
 	"juejin/app/internal/service/internal/digg"
 	"juejin/app/internal/service/internal/draft"
 	"juejin/app/internal/service/internal/follower"
+	"juejin/app/internal/service/internal/oidc"
 	"juejin/app/internal/service/internal/rank"
 	"juejin/app/internal/service/internal/tag"
 	"juejin/app/internal/service/internal/user"
@@ -26,6 +27,7 @@ var (
 	insDigg       = digg.Group{}
 	insCategory   = category.Group{}
 	insRank       = rank.Group{}
+	insOidc       = oidc.Group{}
 )
 
 func User() *user.Group {
@@ -70,4 +72,8 @@ func Category() *category.Group {
 
 func Rank() *rank.Group {
 	return &insRank
+}
+
+func Oidc() *oidc.Group {
+	return &insOidc
 }

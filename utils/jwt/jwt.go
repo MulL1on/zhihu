@@ -74,3 +74,48 @@ func (j *JWT) ParseToken(tokenString string) (*CustomClaims, error) {
 		return nil, TokenInvalid
 	}
 }
+
+func (j *JWT) GenerateIdToken(claims *jwt.RegisteredClaims) (string, error) {
+	token := jwt.NewWithClaims(jwt.SigningMethodRS256, *claims)
+	signingKey := []byte(j.Config.SecretKey)
+	return token.SignedString(signingKey)
+}
+
+func (j *JWT) CreateOIDCClaims(sub string, aud []string) jwt.RegisteredClaims {
+	claims := jwt.RegisteredClaims{
+		Issuer:    j.Config.Issuer,
+		Subject:   sub,
+		Audience:  aud,
+		ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Duration(j.Config.ExpireTime) * time.Second)),
+		NotBefore: jwt.NewNumericDate(time.Now().Truncate(time.Second)),
+	}
+	return claims
+}
+
+func (j *JWT) ParseIdToken(tokenString string) (*jwt.RegisteredClaims, error) {
+	signingKey := []byte(j.Config.SecretKey)
+	token, err := jwt.ParseWithClaims(tokenString, &jwt.RegisteredClaims{}, func(token *jwt.Token) (i interface{}, err error) {
+		return signingKey, nil
+	})
+	if err != nil {
+		if ve, ok := err.(jwt.ValidationError); ok {
+			if ve.Errors&jwt.ValidationErrorMalformed != 0 {
+				return nil, TokenMalformed
+			} else if ve.Errors&jwt.ValidationErrorExpired != 0 {
+				return nil, TokenExpired
+			} else if ve.Errors&jwt.ValidationErrorNotValidYet != 0 {
+				return nil, TokenNotValidYet
+			} else {
+				return nil, TokenInvalid
+			}
+		}
+	}
+	if token != nil {
+		if claims, ok := token.Claims.(*jwt.RegisteredClaims); ok && token.Valid {
+			return claims, nil
+		}
+		return nil, TokenInvalid
+	} else {
+		return nil, TokenInvalid
+	}
+}

@@ -14,6 +14,7 @@ type Auth struct {
 	Email      string    `json:"email" form:"email" db:"email"`
 	Phone      string    `json:"phone" form:"phone" db:"phone" `
 	Code       string    `json:"code" form:"code" db:"-"`
+	GithubId   int64     `json:"github_id" form:"github_id" db:"github_id"`
 	CreateTime time.Time `json:"create_time" form:"create_time" db:"create_time"`
 	UpdateTime time.Time `json:"update_time" form:"update_time" db:"update_time"`
 }

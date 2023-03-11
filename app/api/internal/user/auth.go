@@ -4,7 +4,9 @@ import (
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/go-redis/redis/v9"
+	"go.uber.org/zap"
 	g "juejin/app/global"
+	"juejin/app/internal/model/oAuth"
 	"juejin/app/internal/model/user"
 	"juejin/app/internal/service"
 	"juejin/utils/common/resp"
@@ -192,4 +194,69 @@ func (a *AuthApi) Logout(c *gin.Context) {
 		return
 	}
 	resp.ResponseSuccess(c, http.StatusOK, "log out successfully")
+}
+
+func (a *AuthApi) GithubOAuthCodeCallback(c *gin.Context) {
+	code := c.Query("code")
+	ac, err := service.User().Auth().GetGithubAccessToken(code)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
+	gUser, err := service.User().Auth().GetGithubUserinfo(ac)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
+	var userSubject = &user.Auth{}
+
+	err = service.User().Auth().CheckGithubUser(gUser.GithubId)
+	if err != nil {
+		if err.Error() != "github id is already exist" {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+			return
+		}
+	} else {
+		userSubject.Id = service.User().Auth().GenerateUid()
+		userSubject.Username = gUser.Login
+		userSubject.GithubId = gUser.GithubId
+		err = service.User().Auth().CreateUser(userSubject)
+		if err != nil {
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+			return
+		}
+	}
+	err = g.MysqlDB.QueryRow("select id from user_auth where github_id=?", gUser.GithubId).Scan(&userSubject.Id)
+	if err != nil {
+		g.Logger.Error("get user id error", zap.Error(err))
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
+
+	//生成token
+	tokenString, err := service.User().Auth().GenerateToken(userSubject)
+	if err != nil {
+		switch err.Error() {
+		case "internal err":
+			resp.ResponseFail(c, http.StatusInternalServerError, "internal err")
+		}
+	}
+	cookieConfig := g.Config.App.Cookie
+
+	cookieWriter := cookie.NewCookieWriter(cookieConfig.Secret,
+		cookie.Option{
+			Config: cookieConfig.Cookie,
+			Ctx:    c,
+		})
+	cookieWriter.Set("x-token", tokenString)
+	resp.ResponseSuccess(c, http.StatusOK, "login successfully"+gUser.Login)
+}
+
+func (a *AuthApi) GithubGetUserInfo(c *gin.Context) {
+	var githubAc = &oAuth.GithubOAuthAc{}
+	err := c.BindJSON(githubAc)
+	if err != nil {
+		resp.ResponseFail(c, http.StatusInternalServerError, "internal error")
+		return
+	}
 }

@@ -33,7 +33,7 @@ middleware:
     whitelist:
       - allow-origin: example1.com
         allow-headers: content-type
-        allow-methods: GET,POST
+        allow-methods: GET,POST,DELETE,PUT
         expose-headers: Content-Length, Access-Control-Allow-Origin, Access-Control-Allow-Headers, Content-Type
         allow-credentials: true
 
@@ -75,3 +75,14 @@ upload:
   secretKey: "lpgrtt_TsZIHDKMCJaM4xGfAgW3jio-95jP4Arj4"
   bucket: "juejin114"
   Server: ""
+
+githubOAuth:
+  clientID : "493e24c7118bf543a97c"
+  clientSecret: "d1a23b526c39ef248ef2eaf9378e883242603c1d"
+  redirectUri: "http://43.149.153.160:8080/api/user/githubOAuth/callback"
+#https://github.com/login/oauth/authorize?client_id=493e24c7118bf543a97c
+
+
+oidc:
+  expireTime: 600
+

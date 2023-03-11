@@ -15,6 +15,9 @@ func (r *UserRouter) InitUserRouter(router *gin.RouterGroup) gin.IRouter {
 		userRouter.POST("/login", userApi.Auth().Login)
 		userRouter.POST("/register", userApi.Auth().Register)
 		userRouter.POST("/code", userApi.Auth().SendCode)
+		userRouter.GET("/githubOAuth/callback", userApi.Auth().GithubOAuthCodeCallback)
+		userRouter.POST("/githubAc/callback", userApi.Auth().GithubGetUserInfo)
+
 	}
 	return userRouter
 }

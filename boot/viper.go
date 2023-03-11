@@ -11,7 +11,7 @@ import (
 // 优先级：命令行参数>环境变量>默认
 const (
 	configEnv  = "JUEJIN_CONFIG_PATH"
-	configFile = "manifest/config/config.yaml"
+	configFile = "./config.yaml"
 )
 
 func ViperSetup(path ...string) {

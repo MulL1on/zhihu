@@ -3,16 +3,19 @@ package user
 import (
 	"context"
 	"database/sql"
-
+	"encoding/json"
 	"fmt"
 	"go.uber.org/zap"
 	"golang.org/x/crypto/bcrypt"
 	"gopkg.in/gomail.v2"
+	"io/ioutil"
 	g "juejin/app/global"
+	"juejin/app/internal/model/oAuth"
 	"juejin/app/internal/model/user"
 	"juejin/utils/jwt"
 	myjwt "juejin/utils/jwt"
 	"math/rand"
+	"net/http"
 	"regexp"
 	"time"
 )
@@ -71,8 +74,8 @@ func (s *SAuth) CreateUser(userSubject *user.Auth) error {
 		g.Logger.Error("begin trans failed", zap.Error(err))
 		return err
 	}
-	sqlStr1 := "insert into user_auth (id,username,password,email,phone,create_time,update_time) values (?,?,?,?,?,?,?)"
-	_, err = tx.Exec(sqlStr1, userSubject.Id, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now())
+	sqlStr1 := "insert into user_auth (id,username,password,email,phone,create_time,update_time,github_id) values (?,?,?,?,?,?,?,?)"
+	_, err = tx.Exec(sqlStr1, userSubject.Id, userSubject.Username, userSubject.Password, userSubject.Email, userSubject.Phone, time.Now(), time.Now(), userSubject.GithubId)
 	if err != nil {
 		tx.Rollback()
 		g.Logger.Error("create user sqlStr1 error", zap.Error(err))
@@ -193,4 +196,72 @@ func (s *SAuth) AddTokenToBlackList(ctx context.Context, token string) error {
 
 func (s *SAuth) GenerateUid() int64 {
 	return g.SfNode.Generate().Int64()
+}
+
+func (s *SAuth) GetGithubAccessToken(code string) (*oAuth.GithubOAuthAc, error) {
+	type Data struct {
+		ClientId     string `json:"client_id"`
+		ClientSecret string `json:"client_secret"`
+		Code         string `json:"code"`
+	}
+
+	url := fmt.Sprintf("https://github.com/login/oauth/access_token?client_id=493e24c7118bf543a97c&client_secret=3c4f4d28651c6e592bfa04997559c0e16b20b263&code=%s", code)
+	req, err := http.NewRequest("GET", url, nil)
+	client := &http.Client{}
+	req.Header.Add("Accept", "application/json")
+	response, err := client.Do(req)
+	if err != nil {
+		g.Logger.Error("get github OAuth access token error", zap.Error(err))
+		return nil, err
+	}
+	var res = &oAuth.GithubOAuthAc{}
+	b, _ := ioutil.ReadAll(response.Body)
+	err = json.Unmarshal(b, res)
+	if err != nil {
+		g.Logger.Error("get github OAuth access token error", zap.Error(err))
+		return nil, err
+	}
+	defer response.Body.Close()
+	return res, nil
+}
+
+func (s *SAuth) GetGithubUserinfo(ac *oAuth.GithubOAuthAc) (*oAuth.GithubUserInfo, error) {
+	client := &http.Client{}
+	req, err := http.NewRequest("GET", "https://api.github.com/user", nil)
+	if err != nil {
+		g.Logger.Error("get github userinfo error", zap.Error(err))
+		return nil, err
+	}
+	req.Header.Set("accept", "application/json")
+	req.Header.Add("Authorization", "token "+ac.AccessToken)
+	response, err := client.Do(req)
+	if err != nil {
+		g.Logger.Error("get github userinfo error", zap.Error(err))
+		return nil, err
+	}
+	var gUser = &oAuth.GithubUserInfo{}
+	defer response.Body.Close()
+	b, _ := ioutil.ReadAll(response.Body)
+	err = json.Unmarshal(b, gUser)
+	if err != nil {
+		g.Logger.Error("get github userinfo error", zap.Error(err))
+		return nil, err
+	}
+	g.Logger.Error("github user info", zap.Any("user info", gUser))
+	return gUser, nil
+}
+
+func (s *SAuth) CheckGithubUser(githubId int64) error {
+	var id string
+	sqlStr := "select id from user_auth where github_id=?"
+	err := g.MysqlDB.QueryRow(sqlStr, githubId).Scan(&id)
+	if err != nil {
+		if err != sql.ErrNoRows {
+			g.Logger.Error("internal error", zap.Error(err))
+			return err
+		} else {
+			return nil
+		}
+	}
+	return fmt.Errorf("github id is already exist")
 }

@@ -35,7 +35,6 @@ func (s *SRank) GetAuthorRankings(limit int, pageNo int) (*[]user.InfoPack, erro
 		score := gotDiggCount*0.05 + gotDiggCount
 		rankings[userId] = score
 	}
-	g.Logger.Error("rankings", zap.Any("rankings", rankings))
 	for k, _ := range rankings {
 		var u user.InfoPack
 		err = getUserInfo(context.Background(), &u.Basic, &u.Counter, k)
