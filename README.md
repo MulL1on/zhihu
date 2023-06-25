@@ -61,7 +61,7 @@
 key blacklist:$token val ""
 ```
 
-![cache1](https://github.com/MulL1on/zhihu/blob/master/cache/cache1.png)
+![cache1](https://github.com/MulL1on/zhihu/blob/master/img/cache1.png)
 
 ### 点赞状态
 
@@ -75,7 +75,7 @@ status 为 0 时 未点赞
 key $userid:$item_id:$item_type val {$status}
 ```
 
-![cache2](https://github.com/MulL1on/zhihu/blob/master/cache/cache2.png)
+![cache2](https://github.com/MulL1on/zhihu/blob/master/img/cache2.png)
 
 ### 点赞数、浏览数计数
 
