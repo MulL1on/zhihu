@@ -87,7 +87,7 @@ hash保存点赞数和浏览数，定时任务将缓存的数据同步到mysql�
 key user_counter field {$user_id:digg_article_count/got_digg_count/got_view_count} value {$count}
 ```
 
-![cache4](https://github.com/MulL1on/zhihu/blob/master/cache/cache4.png)
+![cache4](https://github.com/MulL1on/zhihu/blob/master/img/cache4.png)
 
 **文章**
 
@@ -95,7 +95,7 @@ key user_counter field {$user_id:digg_article_count/got_digg_count/got_view_coun
 key article_counter field {$article_id:digg_count/view_count} value {$count}
 ```
 
-![cache5](https://github.com/MulL1on/zhihu/blob/master/cache/cache5.png)
+![cache5](https://github.com/MulL1on/zhihu/blob/master/img/cache5.png)
 
 **评论**
 
@@ -103,7 +103,7 @@ key article_counter field {$article_id:digg_count/view_count} value {$count}
 key comment_counter field {$comment_id:digg_count} value {$count}
 ```
 
-![cache6](https://github.com/MulL1on/zhihu/blob/master/cache/cache6.png)
+![cache6](https://github.com/MulL1on/zhihu/blob/master/img/cache6.png)
 
 **回复**
 
@@ -111,7 +111,7 @@ key comment_counter field {$comment_id:digg_count} value {$count}
 key reply_counter field {$comment_id:digg_count} value {$count}
 ```
 
-![cache7](https://github.com/MulL1on/zhihu/blob/master/cache/cache7.png)
+![cache7](https://github.com/MulL1on/zhihu/blob/master/img/cache7.png)
 
 
 
