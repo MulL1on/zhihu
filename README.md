@@ -49,7 +49,7 @@
 
 ## 表结构
 
-![](https://github.com/MulL1on/zhihu/blob/master/img/db.jpg)
+![db](https://github.com/MulL1on/zhihu/blob/master/img/db.jpg)
 
 ## **缓存设计**
 
