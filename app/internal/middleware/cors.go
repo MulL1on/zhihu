@@ -10,7 +10,7 @@ func CORS() gin.HandlerFunc {
 		ctx.Writer.Header().Set("Access-Control-Allow-Methods", "POST,OPTIONS,GET,PUT,DELETE")
 
 		if ctx.Request.Method == "OPTIONS" {
-			ctx.AbortWithStatus(204)
+			ctx.AbortWithStatus(200)
 			return
 		}
 		ctx.Next()

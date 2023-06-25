@@ -7603,3 +7603,29 @@
 [2023-03-10 00:23:13.124]	INFO	D:/GoProjects/src/juejin/app/internal/middleware/rateLimit.go:17	new bucket successfully	{"capacity": 300, "rate": 300}
 [2023-03-10 00:23:13.127]	INFO	D:/GoProjects/src/juejin/app/router/router.go:34	initialize routers successfully
 [2023-03-10 00:23:13.127]	INFO	D:/GoProjects/src/juejin/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-06-25 18:58:01.225]	INFO	D:/GoProjects/src/zhihu/boot/logger.go:55	initialize logger successfully
+[2023-06-25 18:58:01.325]	INFO	D:/GoProjects/src/zhihu/boot/database.go:30	initialize mysql successfully
+[2023-06-25 18:58:01.331]	FATAL	D:/GoProjects/src/zhihu/boot/database.go:46	connect to redis failed	{"error": "ERR Client sent AUTH, but no password is set"}
+[2023-06-25 18:59:41.305]	INFO	D:/GoProjects/src/zhihu/boot/logger.go:55	initialize logger successfully
+[2023-06-25 18:59:41.323]	INFO	D:/GoProjects/src/zhihu/boot/database.go:30	initialize mysql successfully
+[2023-06-25 18:59:41.325]	INFO	D:/GoProjects/src/zhihu/boot/database.go:49	initialize redis successfully.
+[2023-06-25 18:59:41.325]	INFO	D:/GoProjects/src/zhihu/boot/snowflake.go:15	initialize snowflake successfully
+[2023-06-25 18:59:41.325]	INFO	D:/GoProjects/src/zhihu/boot/cron.go:55	initialize cron successfully	{"counter spec": "0 */1 * * * *"}
+[2023-06-25 18:59:41.325]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/rateLimit.go:17	new bucket successfully	{"capacity": 300, "rate": 300}
+[2023-06-25 18:59:41.328]	INFO	D:/GoProjects/src/zhihu/app/router/router.go:34	initialize routers successfully
+[2023-06-25 18:59:41.329]	INFO	D:/GoProjects/src/zhihu/boot/server.go:25	initialize server successfully	{"port": ":8080"}
+[2023-06-25 19:00:00.014]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "1.0844ms"}
+[2023-06-25 19:00:00.016]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "2.7236ms"}
+[2023-06-25 19:00:00.016]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "2.7236ms"}
+[2023-06-25 19:00:00.016]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "2.7236ms"}
+[2023-06-25 19:00:00.016]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "2.7236ms"}
+[2023-06-25 19:00:42.294]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/logger.go:22	/api/user/code	{"status": 200, "method": "POST", "path": "/api/user/code", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "76.0943ms"}
+[2023-06-25 19:01:00.004]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan comment_counter cache successfully	{"cost": "1.0627ms"}
+[2023-06-25 19:01:00.005]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:59	scan check digg successfully	{"cost": "1.2583ms"}
+[2023-06-25 19:01:00.005]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan user_counter cache successfully	{"cost": "1.2583ms"}
+[2023-06-25 19:01:00.005]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan article_counter cache successfully	{"cost": "1.2583ms"}
+[2023-06-25 19:01:00.005]	INFO	D:/GoProjects/src/zhihu/utils/common/cache/cache.go:36	scan reply_counter cache successfully	{"cost": "1.2583ms"}
+[2023-06-25 19:01:21.727]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/logger.go:22	/api/rank/author	{"status": 200, "method": "GET", "path": "/api/rank/author", "query": "limit=1&page_no=1", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "19.1746ms"}
+[2023-06-25 19:01:32.749]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/logger.go:22	/api/digg/	{"status": 400, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "1.4537ms"}
+[2023-06-25 19:01:37.210]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/logger.go:22	/api/digg/	{"status": 400, "method": "POST", "path": "/api/digg/", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "746.6µs"}
+[2023-06-25 19:01:50.645]	INFO	D:/GoProjects/src/zhihu/app/internal/middleware/logger.go:22	/api/user/login	{"status": 200, "method": "POST", "path": "/api/user/login", "query": "", "ip": "::1", "user-agent": "Apifox/1.0.0 (https://www.apifox.cn)", "errors": "", "cost": "52.1605ms"}
